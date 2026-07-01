@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Ultipro_OrgLevel2"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ee5b732f-97aa-95ef-448d-7ee0bdd5d2d9"
+  }
+}

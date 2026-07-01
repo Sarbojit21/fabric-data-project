@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "VW_FI_GENLDGT2_CUR_D"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "58bff780-1a16-9871-4a20-27ef1e18f365"
+  }
+}
