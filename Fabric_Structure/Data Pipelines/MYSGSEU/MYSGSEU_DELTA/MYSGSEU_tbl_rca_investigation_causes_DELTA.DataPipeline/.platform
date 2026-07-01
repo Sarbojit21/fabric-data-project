@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_rca_investigation_causes_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6ebfa929-908f-884e-4a99-12814605bfc3"
+  }
+}

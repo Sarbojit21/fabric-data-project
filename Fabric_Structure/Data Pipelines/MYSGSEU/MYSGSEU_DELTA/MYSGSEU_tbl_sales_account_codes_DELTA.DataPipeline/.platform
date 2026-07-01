@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_sales_account_codes_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "82dddd48-67dc-8a23-4bb0-21f3e789ed91"
+  }
+}

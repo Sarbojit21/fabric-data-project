@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_price_matrix_variants_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a1cb5aa4-10b5-bef2-4dd2-2991441b3697"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_rca_defectCategory_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5d3e6a9a-9151-9115-49e7-a762761115eb"
+  }
+}

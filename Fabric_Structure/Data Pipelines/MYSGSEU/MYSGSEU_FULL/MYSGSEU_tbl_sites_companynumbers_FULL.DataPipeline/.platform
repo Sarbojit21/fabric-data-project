@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_sites_companynumbers_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "39240fa8-9b8f-9a48-44f7-075bdb67c7d4"
+  }
+}

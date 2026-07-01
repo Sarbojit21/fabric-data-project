@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PROD_PL_UKGPro-WFM_Timekeeping_Timecard-Metrics_API"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "350d2daf-637b-a768-4cbe-6cefa2971219"
+  }
+}

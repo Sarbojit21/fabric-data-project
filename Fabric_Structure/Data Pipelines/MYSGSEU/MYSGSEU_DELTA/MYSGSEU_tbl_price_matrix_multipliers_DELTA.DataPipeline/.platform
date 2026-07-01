@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_price_matrix_multipliers_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "56461a6c-aed0-9bb1-43b4-7d4b53c74aff"
+  }
+}

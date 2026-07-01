@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_sites_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5d0aa60c-6f35-bf15-4547-0231c23f6a8c"
+  }
+}

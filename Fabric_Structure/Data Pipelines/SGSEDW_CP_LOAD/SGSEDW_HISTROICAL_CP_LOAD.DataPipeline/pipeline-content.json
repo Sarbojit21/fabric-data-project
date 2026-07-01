@@ -1,0 +1,357 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "8b0b6946-510f-b342-49ba-3db13200de34",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202501"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202501",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_LOAD_PREP",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "f55480e3-c8fb-8273-44a4-7dba563421ad",
+            "type": "PipelineReference"
+          },
+          "parameters": {},
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_LOAD_PREP",
+        "dependsOn": []
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "8b0b6946-510f-b342-49ba-3db13200de34",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202502"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202502",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202501",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "8b0b6946-510f-b342-49ba-3db13200de34",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202503"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202503",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202502",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202504"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202504",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202503",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202505"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202505",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202504",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202506"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202506",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202505",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202507"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202507",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202506",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202508"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202508",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202507",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202509"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202509",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202508",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202510"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202510",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202509",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202511"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202511",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202510",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "ProcMonth": "202512"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "SGSEDW_FACT_202512",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202511",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "USE DATABASE SGSEDW\n\nUSE SCHEMA DBO;\n\nCALL SGSEDW.DBO.\"Proc_PostProcessing_CPV2\"() ;",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00",
+          "connectionVersion": "1.1"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Proc_PostProcessing_CPV2",
+        "dependsOn": [
+          {
+            "activity": "SGSEDW_FACT_202512",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

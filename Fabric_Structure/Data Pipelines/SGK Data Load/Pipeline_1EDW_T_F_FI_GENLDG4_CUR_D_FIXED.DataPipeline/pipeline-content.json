@@ -1,0 +1,78 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "schema": "GLOBAL_EDW",
+                "table": "EDW_T_F_FI_GENLDG4_CUR_D_FIXED",
+                "database": "GLOBAL_EDW_DSP"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "tableOption": "autoCreate",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "writeBehavior": "Insert",
+            "datasetSettings": {
+              "type": "DataWarehouseTable",
+              "typeProperties": {
+                "schema": "BRONZE",
+                "table": "EDW_T_F_FI_GENLDG4_CUR_D_FIXED"
+              },
+              "schema": [],
+              "connectionSettings": {
+                "name": "GLOBAL_EDW",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "e9fa96b7-68e8-9ccd-40a3-4d92175895f8",
+                    "endpoint": "c2rbjb2faruufollpwcl3w3nue-ozi5pscjxf7e7jsyxglgapwiym.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "externalReferences": {
+                    "connection": "58c93752-eeeb-4f41-a48e-9e35711f89cb"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "EDW_T_F_FI_GENLDG4_CUR_D_FIXED",
+        "dependsOn": []
+      }
+    ]
+  }
+}

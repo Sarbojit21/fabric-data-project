@@ -1,0 +1,1279 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "BeginDate",
+          "value": {
+            "value": "@if(equals(toLower(trim(pipeline().parameters.ExtractType)), 'full'), pipeline().parameters.FullLoadStartDate, formatDateTime(startOfMonth(addToTime(utcNow(),mul(int(pipeline().parameters.BeforeMonth), -1), 'Month')), 'yyyy-MM-dd'))\n",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set BeginDate",
+        "dependsOn": [
+          {
+            "activity": "Set StartDate_Notebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "Enddate",
+          "value": {
+            "value": "@if(equals(toLower(trim(pipeline().parameters.ExtractType)), 'full'), pipeline().parameters.FullLoadEndDate, utcNow('yyyy-MM-dd'))",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set EndDate",
+        "dependsOn": []
+      },
+      {
+        "type": "Until",
+        "typeProperties": {
+          "expression": {
+            "value": "@greater(replace(variables('BeginDate'),'-',''), replace(variables('EndInclusiveFinal'),'-',''))",
+            "type": "Expression"
+          },
+          "timeout": "0.12:00:00",
+          "activities": [
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "RestSource",
+                  "requestMethod": "POST",
+                  "requestBody": {
+                    "value": "{\n  \"where\": {\n    \"employeeSet\": {\n      \"dateRange\": {\n      \"startDate\": \"@{variables('IterStart')}\",\n        \"endDate\": \"@{variables('WindowEndInclusive')}\"\n      },\n      \"hyperFindRef\": {\n        \"id\": @{pipeline().parameters.HyperFind}\n      }\n    }\n  },\n  \"select\": [\n    \"@{pipeline().parameters.SELECT_API_SERVICE}\"\n  ]\n}",
+                    "type": "Expression"
+                  },
+                  "additionalHeaders": {
+                    "Authorization": {
+                      "value": "@variables('access_token')",
+                      "type": "Expression"
+                    },
+                    "Content-Type": "application/json"
+                  },
+                  "httpRequestTimeout": "00:01:40",
+                  "requestInterval": "00.00:00:00.010",
+                  "datasetSettings": {
+                    "type": "RestResource",
+                    "typeProperties": {
+                      "relativeUrl": "/api/v1/timekeeping/timecard_metrics/multi_read"
+                    },
+                    "schema": [],
+                    "externalReferences": {
+                      "connection": "c3dd71f5-8c6b-479d-a576-74b4deda8ca7"
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "ParquetSink",
+                  "formatSettings": {
+                    "type": "ParquetWriteSettings",
+                    "enableVertiParquet": true
+                  },
+                  "storeSettings": {
+                    "type": "AzureBlobStorageWriteSettings"
+                  },
+                  "datasetSettings": {
+                    "type": "Parquet",
+                    "typeProperties": {
+                      "location": {
+                        "type": "LakehouseLocation",
+                        "folderPath": {
+                          "value": "@concat('WFM/', pipeline().parameters.SELECT_API_SERVICE)",
+                          "type": "Expression"
+                        },
+                        "fileName": {
+                          "value": "@variables('Filename')",
+                          "type": "Expression"
+                        }
+                      },
+                      "compressionCodec": "snappy"
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "BRONZE",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Files"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "mappings": [
+                    {
+                      "source": {
+                        "name": "employeeId.id",
+                        "type": "Int64"
+                      },
+                      "sink": {
+                        "name": "employeeId.id",
+                        "type": "Int64",
+                        "physicalType": "INT_64"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "employeeId.qualifier",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "employeeId.qualifier",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "employeeId.name",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "employeeId.name",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.uniqueId",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.uniqueId",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.employee.id",
+                        "type": "Int64"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.employee.id",
+                        "type": "Int64",
+                        "physicalType": "INT_64"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.employee.qualifier",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.employee.qualifier",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.employee.name",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.employee.name",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.applyDate",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.applyDate",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.durationInHours",
+                        "type": "Double"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.durationInHours",
+                        "type": "Double",
+                        "physicalType": "DOUBLE"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.wages",
+                        "type": "Double"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.wages",
+                        "type": "Double",
+                        "physicalType": "DOUBLE"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.wagesCurrency.amount",
+                        "type": "Double"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.wagesCurrency.amount",
+                        "type": "Double",
+                        "physicalType": "DOUBLE"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.wagesCurrency.currencyCode",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.wagesCurrency.currencyCode",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.daysAmount",
+                        "type": "Double"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.daysAmount",
+                        "type": "Double",
+                        "physicalType": "DOUBLE"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.payCode.id",
+                        "type": "Int64"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.payCode.id",
+                        "type": "Int64",
+                        "physicalType": "INT_64"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.payCode.qualifier",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.payCode.qualifier",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.payCode.name",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.payCode.name",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.amountType",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.amountType",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.combined",
+                        "type": "Boolean"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.combined",
+                        "type": "Boolean",
+                        "physicalType": "BOOLEAN"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.job.id",
+                        "type": "Int64"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.job.id",
+                        "type": "Int64",
+                        "physicalType": "INT_64"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.job.qualifier",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.job.qualifier",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    },
+                    {
+                      "source": {
+                        "name": "dailyActualTotalSummary.job.name",
+                        "type": "String"
+                      },
+                      "sink": {
+                        "name": "dailyActualTotalSummary.job.name",
+                        "type": "String",
+                        "physicalType": "STRING"
+                      }
+                    }
+                  ],
+                  "collectionReference": "",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  },
+                  "columnFlattenSettings": {
+                    "treatArrayAsString": false,
+                    "treatStructAsString": false,
+                    "flattenColumnDelimiter": "."
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "TimeKeeping_Timecard_PARQUET",
+              "dependsOn": [
+                {
+                  "activity": "Set Filename",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Copy",
+              "typeProperties": {
+                "source": {
+                  "type": "ParquetSource",
+                  "additionalColumns": [
+                    {
+                      "name": "CurrentAsofDate",
+                      "value": {
+                        "value": "@utcNow()",
+                        "type": "Expression"
+                      }
+                    }
+                  ],
+                  "storeSettings": {
+                    "type": "AzureBlobStorageReadSettings",
+                    "recursive": true,
+                    "enablePartitionDiscovery": false
+                  },
+                  "formatSettings": {
+                    "type": "ParquetReadSettings"
+                  },
+                  "datasetSettings": {
+                    "type": "Parquet",
+                    "typeProperties": {
+                      "location": {
+                        "type": "LakehouseLocation",
+                        "folderPath": {
+                          "value": "@concat('WFM/', pipeline().parameters.SELECT_API_SERVICE)",
+                          "type": "Expression"
+                        },
+                        "fileName": {
+                          "value": "@variables('Filename')",
+                          "type": "Expression"
+                        }
+                      },
+                      "compressionCodec": "snappy"
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "BRONZE",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Files"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "sink": {
+                  "type": "LakehouseTableSink",
+                  "tableActionOption": "Append",
+                  "partitionOption": "None",
+                  "datasetSettings": {
+                    "type": "LakehouseTable",
+                    "typeProperties": {
+                      "schema": "UKG",
+                      "table": "TimeCard_DAILY_ACTUAL_TOTAL_SUMMARY"
+                    },
+                    "schema": [],
+                    "linkedService": {
+                      "name": "BRONZE",
+                      "properties": {
+                        "type": "Lakehouse",
+                        "typeProperties": {
+                          "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                          "workspaceId": "00000000-0000-0000-0000-000000000000",
+                          "rootFolder": "Tables"
+                        },
+                        "annotations": []
+                      }
+                    },
+                    "annotations": []
+                  }
+                },
+                "translator": {
+                  "type": "TabularTranslator",
+                  "typeConversion": true,
+                  "typeConversionSettings": {
+                    "allowDataTruncation": true,
+                    "treatBooleanAsNumber": false
+                  }
+                },
+                "enableStaging": false
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "PARQUET_to_TimeCard_Table",
+              "dependsOn": [
+                {
+                  "activity": "TimeKeeping_Timecard_PARQUET",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "WindowEndInclusive",
+                "value": {
+                  "value": "@formatDateTime(if(greater(replace(formatDateTime(addDays(variables('IterStart'),sub(pipeline().parameters.WindowsDays,1)),'yyyy-MM-dd'),'-',''),replace(variables('EndInclusiveFinal'),'-','')),variables('EndInclusiveFinal'),formatDateTime(addDays(variables('IterStart'),sub(pipeline().parameters.WindowsDays,1)),'yyyy-MM-dd')),'yyyy-MM-dd')",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set WindowEndInclusive",
+              "dependsOn": [
+                {
+                  "activity": "Set IterStart",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "IterStart",
+                "value": {
+                  "value": "@variables('BeginDate')",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set IterStart",
+              "dependsOn": [
+                {
+                  "activity": "If Condition1",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "BeginDate",
+                "value": {
+                  "value": "@formatDateTime(addDays(variables('WindowEndInclusive'), 1), 'yyyy-MM-dd')",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Advance BeginDate",
+              "dependsOn": [
+                {
+                  "activity": "PARQUET_to_TimeCard_Table",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "Filename",
+                "value": {
+                  "value": "@concat('UKG','_','Timecard_Metrics','_',pipeline().parameters.SELECT_API_SERVICE,'_', variables('IterStart'),'_', variables('WindowEndInclusive'),'.parquet')",
+                  "type": "Expression"
+                }
+              },
+              "policy": {
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Set Filename",
+              "dependsOn": [
+                {
+                  "activity": "Set WindowEndInclusive",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "IfCondition",
+              "typeProperties": {
+                "expression": {
+                  "value": "@or(\n    empty(variables('access_token')),\n    greaterOrEquals(utcNow(), addMinutes(variables('TokenAcquiredAt'), int(pipeline().parameters.MaxTokenAgeMinutes)))\n  )",
+                  "type": "Expression"
+                },
+                "ifTrueActivities": [
+                  {
+                    "type": "WebActivity",
+                    "typeProperties": {
+                      "method": "POST",
+                      "relativeUrl": "/api/authentication/access_token/",
+                      "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                      },
+                      "body": {
+                        "value": "grant_type=password&client_id=@{pipeline().parameters.client_id}&client_secret=@{pipeline().parameters.client_secret}&username=@{pipeline().parameters.username}&password=@{pipeline().parameters.password}&auth_chain=OAuthLdapService",
+                        "type": "Expression"
+                      },
+                      "httpRequestTimeout": "00:05:00"
+                    },
+                    "externalReferences": {
+                      "connection": "c3dd71f5-8c6b-479d-a576-74b4deda8ca7"
+                    },
+                    "policy": {
+                      "timeout": "0.00:10:00",
+                      "retry": 2,
+                      "retryIntervalInSeconds": 30,
+                      "secureInput": false,
+                      "secureOutput": false
+                    },
+                    "name": "Retrieve_Tokens_retry",
+                    "dependsOn": []
+                  },
+                  {
+                    "type": "SetVariable",
+                    "typeProperties": {
+                      "variableName": "access_token",
+                      "value": {
+                        "value": "@activity('Retrieve_Tokens_retry').output.access_token",
+                        "type": "Expression"
+                      }
+                    },
+                    "policy": {
+                      "secureInput": false,
+                      "secureOutput": false
+                    },
+                    "name": "Set Access Token_retry",
+                    "dependsOn": [
+                      {
+                        "activity": "Retrieve_Tokens_retry",
+                        "dependencyConditions": [
+                          "Succeeded"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SetVariable",
+                    "typeProperties": {
+                      "variableName": "TokenAcquiredAt",
+                      "value": {
+                        "value": "@utcNow()",
+                        "type": "Expression"
+                      }
+                    },
+                    "policy": {
+                      "secureInput": false,
+                      "secureOutput": false
+                    },
+                    "name": "Set TokenAcquiredAt_retry",
+                    "dependsOn": [
+                      {
+                        "activity": "Set Access Token_retry",
+                        "dependencyConditions": [
+                          "Succeeded"
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "ifFalseActivities": []
+              },
+              "name": "If Condition1",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "Until1",
+        "dependsOn": [
+          {
+            "activity": "Set Access Token",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "EndInclusiveFinal",
+          "value": {
+            "value": "@variables('Enddate')",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set EndInclusiveFinal",
+        "dependsOn": [
+          {
+            "activity": "Set BeginDate",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Set EndDate",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "UKG",
+                "table": "Timecard_Metric_Daily_ActualTotal_Summary"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SILVER",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "05f4420f-4b0f-ba5b-4c58-0501aabf914c",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "SnowflakeSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE \"SILVER_FABRIC\".\"UKG_WFM\".\"Timecard_Metric_Daily_ActualTotal_Summary\";  ",
+              "type": "Expression"
+            },
+            "importSettings": {
+              "type": "SnowflakeImportCopyCommand"
+            },
+            "datasetSettings": {
+              "type": "SnowflakeTable",
+              "typeProperties": {
+                "schema": "UKG_WFM",
+                "table": "Timecard_Metric_Daily_ActualTotal_Summary",
+                "database": "SILVER_FABRIC"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "c81afd22-ec2c-4635-8458-fad1999aa66b"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "EmployeeQualifier",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "EmployeeQualifier",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "EmployeeId",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "EmployeeId",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "JobId",
+                  "type": "Int32",
+                  "physicalType": "integer"
+                },
+                "sink": {
+                  "name": "JobId",
+                  "type": "Decimal",
+                  "physicalType": "NUMBER",
+                  "scale": 0,
+                  "precision": 38
+                }
+              },
+              {
+                "source": {
+                  "name": "employeeJobTitle",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "employeeJobTitle",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "departmentName",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "departmentName",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "plantName",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "plantName",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "location",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "location",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "orgLevel5",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "orgLevel5",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "orgLevel6",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "orgLevel6",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "JobName",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "JobName",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "PayCodeId",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "PayCodeId",
+                  "type": "Decimal",
+                  "physicalType": "NUMBER",
+                  "scale": 0,
+                  "precision": 38
+                }
+              },
+              {
+                "source": {
+                  "name": "PayCodeName",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "PayCodeName",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "AmountType",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "AmountType",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "HoursAmount",
+                  "type": "Double",
+                  "physicalType": "double"
+                },
+                "sink": {
+                  "name": "HoursAmount",
+                  "type": "Decimal",
+                  "physicalType": "NUMBER",
+                  "scale": 6,
+                  "precision": 18
+                }
+              },
+              {
+                "source": {
+                  "name": "WagesCurrencyCode",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "WagesCurrencyCode",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              },
+              {
+                "source": {
+                  "name": "ApplyDate",
+                  "type": "Date",
+                  "physicalType": "date"
+                },
+                "sink": {
+                  "name": "ApplyDate",
+                  "type": "Date",
+                  "physicalType": "DATE"
+                }
+              },
+              {
+                "source": {
+                  "name": "UniqueId",
+                  "type": "String",
+                  "physicalType": "string"
+                },
+                "sink": {
+                  "name": "UniqueId",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Timecards DailyActualTotals to SF",
+        "dependsOn": [
+          {
+            "activity": "Silver Merge Daily ActualTotal",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "c259504d-f15e-b79a-4a9f-cb7c08029a10",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "is_full": {
+              "value": {
+                "value": "@equals(toLower(trim(pipeline().parameters.ExtractType)), 'full')",
+                "type": "Expression"
+              },
+              "type": "bool"
+            },
+            "BeginDate": {
+              "value": {
+                "value": "@variables('StartDate')",
+                "type": "Expression"
+              },
+              "type": "string"
+            },
+            "EndDate": {
+              "value": {
+                "value": "@variables('Enddate')",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Silver Merge Daily ActualTotal",
+        "dependsOn": [
+          {
+            "activity": "Until1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "StartDate",
+          "value": {
+            "value": "@if(equals(toLower(trim(pipeline().parameters.ExtractType)), 'full'), pipeline().parameters.FullLoadStartDate, formatDateTime(startOfMonth(addToTime(utcNow(),mul(int(pipeline().parameters.BeforeMonth), -1), 'Month')), 'yyyy-MM-dd'))\n",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set StartDate_Notebook",
+        "dependsOn": []
+      },
+      {
+        "type": "WebActivity",
+        "typeProperties": {
+          "method": "POST",
+          "relativeUrl": "/api/authentication/access_token/",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "body": {
+            "value": "grant_type=password&client_id=@{pipeline().parameters.client_id}&client_secret=@{pipeline().parameters.client_secret}&username=@{pipeline().parameters.username}&password=@{pipeline().parameters.password}&auth_chain=OAuthLdapService",
+            "type": "Expression"
+          },
+          "httpRequestTimeout": "00:05:00"
+        },
+        "externalReferences": {
+          "connection": "c3dd71f5-8c6b-479d-a576-74b4deda8ca7"
+        },
+        "policy": {
+          "timeout": "0.00:10:00",
+          "retry": 2,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Retrieve_Tokens",
+        "dependsOn": [
+          {
+            "activity": "Set EndInclusiveFinal",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "access_token",
+          "value": {
+            "value": "@activity('Retrieve_Tokens').output.access_token",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set Access Token",
+        "dependsOn": [
+          {
+            "activity": "Retrieve_Tokens",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "TokenAcquiredAt",
+          "value": {
+            "value": "@utcNow()",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set TokenAcquiredAt",
+        "dependsOn": [
+          {
+            "activity": "Set Access Token",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "TRUNCATE TABLE [UKG].[TimeCard];",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00",
+          "connectionVersion": "1.1"
+        },
+        "externalReferences": {
+          "connection": "c81afd22-ec2c-4635-8458-fad1999aa66b"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Delete Old record in Bronze",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Set Access Token",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "relative_url": {
+        "type": "string",
+        "defaultValue": "/api/authentication/access_token/"
+      },
+      "username": {
+        "type": "string",
+        "defaultValue": "APIUser"
+      },
+      "password": {
+        "type": "string",
+        "defaultValue": "lW%?65VI20eW"
+      },
+      "client_id": {
+        "type": "string",
+        "defaultValue": "zrEdD3dOom4VnQ9N01xOpgFPFr2olulP"
+      },
+      "client_secret": {
+        "type": "string",
+        "defaultValue": "b7IPodFJ4hd90MGz"
+      },
+      "ExtractType": {
+        "type": "string",
+        "defaultValue": "Incremental"
+      },
+      "FullLoadStartDate": {
+        "type": "string",
+        "defaultValue": "2026-01-01"
+      },
+      "BeforeMonth": {
+        "type": "string",
+        "defaultValue": "1"
+      },
+      "HyperFind": {
+        "type": "string",
+        "defaultValue": "1"
+      },
+      "WindowsDays": {
+        "type": "int",
+        "defaultValue": 2
+      },
+      "MaxTokenAgeMinutes": {
+        "type": "string",
+        "defaultValue": "25"
+      },
+      "SELECT_API_SERVICE": {
+        "type": "string",
+        "defaultValue": "DAILY_ACTUAL_TOTAL_SUMMARY"
+      },
+      "FullLoadEndDate": {
+        "type": "string",
+        "defaultValue": "2026-01-10"
+      }
+    },
+    "variables": {
+      "access_token": {
+        "type": "String"
+      },
+      "BeginDate": {
+        "type": "String"
+      },
+      "Enddate": {
+        "type": "String"
+      },
+      "EndInclusiveFinal": {
+        "type": "String"
+      },
+      "IterStart": {
+        "type": "String"
+      },
+      "WindowEndInclusive": {
+        "type": "String"
+      },
+      "Filename": {
+        "type": "String"
+      },
+      "Filename_punches": {
+        "type": "String"
+      },
+      "Filename_Overtime": {
+        "type": "String"
+      },
+      "StartDate": {
+        "type": "String"
+      },
+      "TokenAcquiredAt": {
+        "type": "String"
+      },
+      "Filename_WORKED_SHIFTS": {
+        "type": "String"
+      }
+    }
+  }
+}

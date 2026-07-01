@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "TEC_T_D_ETL_JBSTATS2_CUR_D_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "77aa5388-8a7e-80e6-41c6-78db3e71603e"
+  }
+}

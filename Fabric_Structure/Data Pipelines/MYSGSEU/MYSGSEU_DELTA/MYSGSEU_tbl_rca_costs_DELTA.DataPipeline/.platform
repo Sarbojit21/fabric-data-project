@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_rca_costs_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "db932fa2-39c5-9c67-41db-c6d29d12349b"
+  }
+}

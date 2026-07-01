@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Report_Specific_Table"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "69dc1271-647c-975a-4c1f-4c59fcb1e167"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_sales_tax_codes_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "be53f959-6cf0-a505-4955-7b5a7fbc7864"
+  }
+}

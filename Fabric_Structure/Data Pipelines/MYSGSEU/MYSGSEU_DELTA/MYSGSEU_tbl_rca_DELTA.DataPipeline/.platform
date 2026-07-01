@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_rca_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a8411d8c-a4d0-98ae-4e32-7b2bfe43bc02"
+  }
+}

@@ -1,0 +1,461 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT NULL AS SYS_CHANGE_VERSION\n\t   ,NULL AS SYS_CHANGE_CREATION_VERSION\n\t   ,NULL AS SYS_CHANGE_OPERATION\n\t   ,NULL AS SYS_CHANGE_COLUMNS\n\t   ,NULL AS SYS_CHANGE_CONTEXT\n\t   ,NULL AS CT_SiteId\n      ,F.[SiteId]\n      ,[SiteName]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SiteJobFolderRoot],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SiteJobFolderRoot]\n      ,[SiteAdminUID]\n      ,[SiteAdminPWD]\n      ,[SiteAdminDomain]\n      ,[SiteCode]\n      ,[SiteSubCode]\n      ,[CompanyLegalName]\n      ,[LegalAddress]\n      ,[Logo]\n      ,[RemitAddress]\n      ,[CompanyNumberId]\n      ,[LocationBusinessCode]\n      ,[FunctionalCurrencyId]\n      ,[RegionId]\n      ,[BankInformation]\n      ,[TimeZoneId]\n      ,[CountryId]\n      ,CASE\n     WHEN [IsGPNSite] = 'True' THEN 1      \n     WHEN [IsGPNSite] = 'False' THEN 0\n     ELSE [IsGPNSite]\n     END AS [IsGPNSite]\n      ,CASE\n     WHEN [VLMEnabled] = 'True' THEN 1      \n     WHEN [VLMEnabled] = 'False' THEN 0\n     ELSE [VLMEnabled]\n     END AS [VLMEnabled]\n      ,CASE\n     WHEN [ShiftReAssignment] = 'True' THEN 1      \n     WHEN [ShiftReAssignment] = 'False' THEN 0\n     ELSE [ShiftReAssignment]\n     END AS [ShiftReAssignment]\n      ,CASE\n     WHEN [ShiftReAssignmentSplitJobs] = 'True' THEN 1      \n     WHEN [ShiftReAssignmentSplitJobs] = 'False' THEN 0\n     ELSE [ShiftReAssignmentSplitJobs]\n     END AS [ShiftReAssignmentSplitJobs]\n\t  ,DateFormatID\n  FROM [dbo].[tbl_sites]  F ",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "database": "MCGDataFactory"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "dce8062b-aeb5-4bcd-a38a-dc1d449a061f"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DelimitedTextSink",
+            "formatSettings": {
+              "type": "DelimitedTextWriteSettings",
+              "quoteAllText": true,
+              "fileExtension": ".txt"
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Full",
+                  "fileName": {
+                    "value": "@concat('MYSGSEU','_','tbl_sites','.csv')",
+                    "type": "Expression"
+                  }
+                },
+                "columnDelimiter": "^",
+                "rowDelimiter": "\r\n",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "MYSGSEU_tbl_sites_FULL",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT NULL AS SYS_CHANGE_VERSION\n\t   ,NULL AS SYS_CHANGE_CREATION_VERSION\n\t   ,NULL AS SYS_CHANGE_OPERATION\n\t   ,NULL AS SYS_CHANGE_COLUMNS\n\t   ,NULL AS SYS_CHANGE_CONTEXT\n\t   ,NULL AS CT_SiteId\n      ,F.[SiteId]\n      ,[SiteName]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SiteJobFolderRoot],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SiteJobFolderRoot]\n      ,[SiteAdminUID]\n      ,[SiteAdminPWD]\n      ,[SiteAdminDomain]\n      ,[SiteCode]\n      ,[SiteSubCode]\n      ,[CompanyLegalName]\n      ,[LegalAddress]\n      ,[Logo]\n      ,[RemitAddress]\n      ,[CompanyNumberId]\n      ,[LocationBusinessCode]\n      ,[FunctionalCurrencyId]\n      ,[RegionId]\n      ,[BankInformation]\n      ,[TimeZoneId]\n      ,[CountryId]\n      ,CASE\n     WHEN [IsGPNSite] = 'True' THEN 1      \n     WHEN [IsGPNSite] = 'False' THEN 0\n     ELSE [IsGPNSite]\n     END AS [IsGPNSite]\n      ,CASE\n     WHEN [VLMEnabled] = 'True' THEN 1      \n     WHEN [VLMEnabled] = 'False' THEN 0\n     ELSE [VLMEnabled]\n     END AS [VLMEnabled]\n      ,CASE\n     WHEN [ShiftReAssignment] = 'True' THEN 1      \n     WHEN [ShiftReAssignment] = 'False' THEN 0\n     ELSE [ShiftReAssignment]\n     END AS [ShiftReAssignment]\n      ,CASE\n     WHEN [ShiftReAssignmentSplitJobs] = 'True' THEN 1      \n     WHEN [ShiftReAssignmentSplitJobs] = 'False' THEN 0\n     ELSE [ShiftReAssignmentSplitJobs]\n     END AS [ShiftReAssignmentSplitJobs]\n\t  ,DateFormatID\n  FROM [dbo].[tbl_sites]  F ",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "database": "MCGDataFactory"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "dce8062b-aeb5-4bcd-a38a-dc1d449a061f"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "ParquetSink",
+            "formatSettings": {
+              "type": "ParquetWriteSettings",
+              "enableVertiParquet": true
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Parquet",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Full",
+                  "fileName": {
+                    "value": "@concat('MYSGSEU','_','tbl_sites','.parquet')",
+                    "type": "Expression"
+                  }
+                },
+                "compressionCodec": "snappy"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "MYSGSEU_tbl_sites_parquet",
+        "dependsOn": [
+          {
+            "activity": "MYSGSEU_tbl_sites_FULL",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "storeSettings": {
+              "type": "LakehouseReadSettings",
+              "recursive": true,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Full",
+                  "fileName": "MYSGSEU_tbl_sites.csv"
+                },
+                "columnDelimiter": "^",
+                "rowDelimiter": "\r\n",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_sites_FULL"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "File_To_Table",
+        "dependsOn": [
+          {
+            "activity": "MYSGSEU_tbl_sites_parquet",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "c42c626d-f931-bf79-4c91-cc8c56a8194c",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "in_mode": {
+              "value": "FULL",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "tbl_sites_Notebook",
+        "dependsOn": [
+          {
+            "activity": "File_To_Table",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_sites"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SILVER",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "aabf914c-0501-4c58-ba5b-4b0f05f4420f",
+                    "workspaceId": "c8d75176-b949-4f7e-a658-b996603ec8c3",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "SnowflakeSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE \"SILVER\".\"MYSGSEU\".\"tbl_sites\";  ",
+              "type": "Expression"
+            },
+            "importSettings": {
+              "type": "SnowflakeImportCopyCommand"
+            },
+            "datasetSettings": {
+              "type": "SnowflakeTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_sites",
+                "database": "SILVER"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Fabric_To_SF_tbl_sites",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "tbl_sites_Notebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_sites"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SILVER",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "05f4420f-4b0f-ba5b-4c58-0501aabf914c",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "SnowflakeSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE \"SILVER\".\"MYSGSEU\".\"tbl_sites\";",
+              "type": "Expression"
+            },
+            "importSettings": {
+              "type": "SnowflakeImportCopyCommand"
+            },
+            "datasetSettings": {
+              "type": "SnowflakeTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_sites",
+                "database": "SILVER"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "5d21465f-20b5-454e-a1d5-e8e11b3c796a"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Fabric_To_Dev_SF_tbl_sites",
+        "dependsOn": [
+          {
+            "activity": "tbl_sites_Notebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

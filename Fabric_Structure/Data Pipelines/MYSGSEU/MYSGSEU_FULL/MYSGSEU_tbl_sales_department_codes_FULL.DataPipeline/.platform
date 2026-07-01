@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_sales_department_codes_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6aab951e-7150-bf95-468f-4317d784a7ee"
+  }
+}

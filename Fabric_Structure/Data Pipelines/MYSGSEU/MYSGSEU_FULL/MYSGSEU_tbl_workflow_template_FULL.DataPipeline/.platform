@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_workflow_template_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5970cd9d-84ff-b13c-406e-ece24a9de7ca"
+  }
+}

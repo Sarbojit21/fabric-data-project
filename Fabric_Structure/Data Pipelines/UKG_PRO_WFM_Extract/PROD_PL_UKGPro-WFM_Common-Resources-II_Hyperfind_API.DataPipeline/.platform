@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PROD_PL_UKGPro-WFM_Common-Resources-II_Hyperfind_API"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "64c29fef-12af-a5f4-4f12-8ac0bfef8c77"
+  }
+}

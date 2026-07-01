@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Proc_DimLOB"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ed0f680e-4928-977c-4896-baf2a3bb3bf4"
+  }
+}

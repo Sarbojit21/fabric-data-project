@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "stgGLAccountDepartmenLBCCostMapping"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "465758a2-cb64-a2c4-4ae2-4dcd7695ccdf"
+  }
+}

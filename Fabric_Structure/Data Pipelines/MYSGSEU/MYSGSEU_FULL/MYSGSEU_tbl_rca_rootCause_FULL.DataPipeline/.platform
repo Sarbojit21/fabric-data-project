@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_rca_rootCause_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c36b7b09-0527-a63a-4598-02a2b614aef4"
+  }
+}

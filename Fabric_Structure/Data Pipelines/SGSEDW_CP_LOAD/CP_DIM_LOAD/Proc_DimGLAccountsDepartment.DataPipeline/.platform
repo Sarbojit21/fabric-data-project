@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Proc_DimGLAccountsDepartment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8ddab4dc-fb22-9b30-4805-37e822b1a5c0"
+  }
+}

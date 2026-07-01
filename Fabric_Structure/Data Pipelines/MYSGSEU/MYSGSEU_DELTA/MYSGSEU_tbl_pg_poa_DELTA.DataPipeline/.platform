@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_pg_poa_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2aedf028-d093-b67c-451d-15fc6d073994"
+  }
+}

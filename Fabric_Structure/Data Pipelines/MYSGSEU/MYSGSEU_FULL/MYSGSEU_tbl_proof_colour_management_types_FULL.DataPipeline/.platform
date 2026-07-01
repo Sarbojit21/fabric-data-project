@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_proof_colour_management_types_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6f70a1ce-1364-b8a0-4e38-70cd61e43bc6"
+  }
+}

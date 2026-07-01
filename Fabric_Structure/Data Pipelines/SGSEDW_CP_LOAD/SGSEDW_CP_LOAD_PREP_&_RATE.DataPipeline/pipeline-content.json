@@ -1,0 +1,384 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Proc_FactAllocationRateSubServiceGlobal",
+        "type": "Script",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationRateSubServiceGlobal\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateSubServiceGlobal\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationRateSubServiceLBC",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateSubServiceGlobal",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationRateSubServiceLBC\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateSubServiceLBC\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationSubServiceSubRegion",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateSubServiceLBC",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationSubServiceSubRegion\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationSubServiceSubRegion\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationRateServiceGlobal",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationSubServiceSubRegion",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationRateServiceGlobal\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateServiceGlobal\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationRateServiceLBC",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateServiceGlobal",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationRateServiceLBC\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateServiceLBC\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationServiceSubRegion",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateServiceLBC",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationServiceSubRegion\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationServiceSubRegion\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationRateLineOfBusinessGlobal",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationServiceSubRegion",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;   \nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationRateLineOfBusinessGlobal\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateLineOfBusinessGlobal\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationRateLineOfBusinessLBC",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateLineOfBusinessGlobal",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationRateLineOfBusinessLBC\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateLineOfBusinessLBC\"('','FULL') ;",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationRateLineOfBusinessSubRegion",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateLineOfBusinessLBC",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationRateLineOfBusinessSubRegion\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateLineOfBusinessSubRegion\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationRateGlobal",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateLineOfBusinessSubRegion",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nTRUNCATE TABLE SGSEDW.DBO.\"FactAllocationRateGlobal\";\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateGlobal\"('','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      },
+      {
+        "name": "Proc_CP_FactPrep_1V2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateGlobal",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\nUSE SCHEMA DBO;\nCALL SGSEDW.DBO.\"Proc_CP_FactPrep_1V2\"('','FULL') ;",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+        }
+      }
+    ]
+  }
+}

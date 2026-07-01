@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_teams_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ec473e12-72eb-8890-4153-c22567e2800f"
+  }
+}

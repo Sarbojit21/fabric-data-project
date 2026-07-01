@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Proc_DimSubRegion"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "41b7472a-7957-bd9e-4434-1d69c5e94211"
+  }
+}

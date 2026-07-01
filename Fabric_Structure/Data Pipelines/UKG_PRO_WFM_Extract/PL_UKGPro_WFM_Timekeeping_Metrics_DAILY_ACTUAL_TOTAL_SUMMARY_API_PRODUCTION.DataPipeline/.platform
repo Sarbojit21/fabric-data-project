@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "PL_UKGPro_WFM_Timekeeping_Metrics_DAILY_ACTUAL_TOTAL_SUMMARY_API_PRODUCTION"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "01777308-22f1-98fa-4a03-425fbad3e808"
+  }
+}

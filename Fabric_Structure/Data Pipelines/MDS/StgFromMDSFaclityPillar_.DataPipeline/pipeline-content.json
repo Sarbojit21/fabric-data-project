@@ -1,0 +1,708 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "schema": "mdm",
+                "table": " vFromMDStoEDWFaclityPillar",
+                "database": "SGS_MDS"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "5394765e-c3f3-43f9-8fd5-8a4fa3e32b77"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE [GLOBAL_EDW].[SILVER].[StgTransFromMDSFaclityPillar]",
+              "type": "Expression"
+            },
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "writeBehavior": "Insert",
+            "datasetSettings": {
+              "type": "DataWarehouseTable",
+              "typeProperties": {
+                "schema": "SILVER",
+                "table": "StgTransFromMDSFaclityPillar"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "GLOBAL_EDW",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "e9fa96b7-68e8-9ccd-40a3-4d92175895f8",
+                    "endpoint": "c2rbjb2faruufollpwcl3w3nue-ozi5pscjxf7e7jsyxglgapwiym.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "FacilityLBC",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "6"
+                },
+                "sink": {
+                  "name": "FacilityLBC",
+                  "physicalType": "varchar",
+                  "length": "6"
+                }
+              },
+              {
+                "source": {
+                  "name": "FacilityName",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "255"
+                },
+                "sink": {
+                  "name": "FacilityName",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "OriginatingPlantName",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "255"
+                },
+                "sink": {
+                  "name": "OriginatingPlantName",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "FacilityLBCHelper",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "255"
+                },
+                "sink": {
+                  "name": "FacilityLBCHelper",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "Subregion",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "255"
+                },
+                "sink": {
+                  "name": "Subregion",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "Region",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "255"
+                },
+                "sink": {
+                  "name": "Region",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "PillarName",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "255"
+                },
+                "sink": {
+                  "name": "PillarName",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "LBCCurrencyCode",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "255"
+                },
+                "sink": {
+                  "name": "LBCCurrencyCode",
+                  "physicalType": "varchar",
+                  "length": "5"
+                }
+              },
+              {
+                "source": {
+                  "name": "ResolvedInMDSYesorNo",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "3"
+                },
+                "sink": {
+                  "name": "ResolvedInMDSYesorNo",
+                  "physicalType": "varchar",
+                  "length": "3"
+                }
+              },
+              {
+                "source": {
+                  "name": "MDSLastUpdatedBy",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "20"
+                },
+                "sink": {
+                  "name": "MDSLastUpdatedBy",
+                  "physicalType": "varchar",
+                  "length": "20"
+                }
+              },
+              {
+                "source": {
+                  "name": "LastChgDateTime",
+                  "type": "DateTime",
+                  "physicalType": "datetime2",
+                  "precision": 3
+                },
+                "sink": {
+                  "name": "LastUpdatedDate",
+                  "physicalType": "datetime2",
+                  "precision": 6
+                }
+              },
+              {
+                "source": {
+                  "name": "ReportingPillar",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "100"
+                },
+                "sink": {
+                  "name": "ReportingPillar",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "Country",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "100"
+                },
+                "sink": {
+                  "name": "Country",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "CompanyNumber",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "100"
+                },
+                "sink": {
+                  "name": "CompanyNumber",
+                  "physicalType": "varchar",
+                  "length": "50"
+                }
+              },
+              {
+                "source": {
+                  "name": "CompanyName",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "250"
+                },
+                "sink": {
+                  "name": "CompanyName",
+                  "physicalType": "varchar",
+                  "length": "100"
+                }
+              },
+              {
+                "source": {
+                  "name": "CompanyCode",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "100"
+                },
+                "sink": {
+                  "name": "CompanyCode",
+                  "physicalType": "varchar",
+                  "length": "100"
+                }
+              },
+              {
+                "source": {
+                  "name": "Segment",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "100"
+                },
+                "sink": {
+                  "name": "Segment",
+                  "physicalType": "varchar",
+                  "length": "100"
+                }
+              },
+              {
+                "source": {
+                  "name": "CostType",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "100"
+                },
+                "sink": {
+                  "name": "CostType",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              },
+              {
+                "source": {
+                  "name": "CostGroup",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "100"
+                },
+                "sink": {
+                  "name": "CostGroup",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              },
+              {
+                "source": {
+                  "name": "InterCoRegion",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "250"
+                },
+                "sink": {
+                  "name": "InterCoRegion",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              },
+              {
+                "source": {
+                  "name": "CompanyStatus",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "250"
+                },
+                "sink": {
+                  "name": "CompanyStatus",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              },
+              {
+                "source": {
+                  "name": "PCStatus",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "100"
+                },
+                "sink": {
+                  "name": "PCStatus",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "StgFromMDSFaclityPillar",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SnowflakeSource",
+            "exportSettings": {
+              "type": "SnowflakeExportCopyCommand"
+            },
+            "datasetSettings": {
+              "type": "SnowflakeTable",
+              "typeProperties": {
+                "schema": "MDS",
+                "table": "StgTransFromMDSFaclityPillar",
+                "database": "SILVER"
+              },
+              "version": "1.1",
+              "schema": [],
+              "externalReferences": {
+                "connection": "0156338e-ebc8-4d0f-bf35-b317c7e54017"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE [GLOBAL_EDW].[SILVER].[StgTransFromMDSFaclityPillar]",
+              "type": "Expression"
+            },
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "writeBehavior": "Insert",
+            "datasetSettings": {
+              "type": "DataWarehouseTable",
+              "typeProperties": {
+                "schema": "SILVER",
+                "table": "StgTransFromMDSFaclityPillar"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "GLOBAL_EDW",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "175895f8-4d92-40a3-9ccd-68e8e9fa96b7",
+                    "endpoint": "c2rbjb2faruufollpwcl3w3nue-ozi5pscjxf7e7jsyxglgapwiym.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "c8d75176-b949-4f7e-a658-b996603ec8c3"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "FacilityLBC",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "FacilityLBC",
+                  "physicalType": "varchar",
+                  "length": "6"
+                }
+              },
+              {
+                "source": {
+                  "name": "FacilityName",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "FacilityName",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "OriginatingPlantName",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "OriginatingPlantName",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "FacilityLBCHelper",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "FacilityLBCHelper",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "Subregion",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "Subregion",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "Region",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "Region",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "PillarName",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "PillarName",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "LBCCurrencyCode",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "LBCCurrencyCode",
+                  "physicalType": "varchar",
+                  "length": "5"
+                }
+              },
+              {
+                "source": {
+                  "name": "ResolvedInMDSYesorNo",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "ResolvedInMDSYesorNo",
+                  "physicalType": "varchar",
+                  "length": "3"
+                }
+              },
+              {
+                "source": {
+                  "name": "MDSLastUpdatedBy",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "MDSLastUpdatedBy",
+                  "physicalType": "varchar",
+                  "length": "20"
+                }
+              },
+              {
+                "source": {
+                  "name": "LastUpdatedDate",
+                  "type": "Date",
+                  "physicalType": "DATE"
+                },
+                "sink": {
+                  "name": "LastUpdatedDate",
+                  "physicalType": "datetime2",
+                  "precision": 6
+                }
+              },
+              {
+                "source": {
+                  "name": "ReportingPillar",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "ReportingPillar",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "Country",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "Country",
+                  "physicalType": "varchar",
+                  "length": "255"
+                }
+              },
+              {
+                "source": {
+                  "name": "CompanyNumber",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "CompanyNumber",
+                  "physicalType": "varchar",
+                  "length": "50"
+                }
+              },
+              {
+                "source": {
+                  "name": "CompanyName",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "CompanyName",
+                  "physicalType": "varchar",
+                  "length": "100"
+                }
+              },
+              {
+                "source": {
+                  "name": "CompanyCode",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "CompanyCode",
+                  "physicalType": "varchar",
+                  "length": "100"
+                }
+              },
+              {
+                "source": {
+                  "name": "Segment",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "Segment",
+                  "physicalType": "varchar",
+                  "length": "100"
+                }
+              },
+              {
+                "source": {
+                  "name": "CostType",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "CostType",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              },
+              {
+                "source": {
+                  "name": "CostGroup",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "CostGroup",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              },
+              {
+                "source": {
+                  "name": "InterCoRegion",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "InterCoRegion",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              },
+              {
+                "source": {
+                  "name": "CompanyStatus",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "CompanyStatus",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              },
+              {
+                "source": {
+                  "name": "PCStatus",
+                  "type": "String",
+                  "physicalType": "VARCHAR"
+                },
+                "sink": {
+                  "name": "PCStatus",
+                  "physicalType": "varchar",
+                  "length": "250"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "StgFromMDSFaclityPillar_copy1",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": []
+      }
+    ]
+  }
+}

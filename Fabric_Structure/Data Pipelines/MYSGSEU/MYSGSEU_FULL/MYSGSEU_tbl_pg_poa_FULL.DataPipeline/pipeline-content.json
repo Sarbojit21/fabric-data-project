@@ -1,0 +1,461 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "\tSELECT NULL AS SYS_CHANGE_VERSION\n       ,NULL AS SYS_CHANGE_CREATION_VERSION\n       ,NULL AS SYS_CHANGE_OPERATION\n       ,NULL AS SYS_CHANGE_COLUMNS\n       ,NULL AS SYS_CHANGE_CONTEXT\n       ,NULL AS CT_POAId\n\t   ,[POAId]\n       ,[PDRId]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([POANumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [POANumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AdditionalDesc],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [AdditionalDesc]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([BrandInfo],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [BrandInfo]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Brand],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Brand]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Item],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Item]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Format],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Format]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackSize],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackSize]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackSizeUnit],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackSizeUnit]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CountryIcons],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CountryIcons]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CountriesOfSale],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CountriesOfSale]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Languages],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Languages]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([ManufacturingPlants],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [ManufacturingPlants]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingWithVer],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingWithVer]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PrintingProcess],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PrintingProcess]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([InsidePrintingIPMSNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [InsidePrintingIPMSNumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackMaterialType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackMaterialType]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackComponentType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackComponentType]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([FinishedProductCode],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [FinishedProductCode]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([COBarcode],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [COBarcode]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Printer],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Printer]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([NewIPMSNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [NewIPMSNumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([OldIPMSNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [OldIPMSNumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Colours],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Colours]\n\t   ,[LastUpdate]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([ProductExtraVariant],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [ProductExtraVariant]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MarketingCountry],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MarketingCountry]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([GCAS],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [GCAS]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SupplierCode],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SupplierCode]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TPOANumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TPOANumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MPMSNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MPMSNumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackagingLevel],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackagingLevel]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CUBarcode],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CUBarcode]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CaseCount],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CaseCount]\n\t   ,[SiteId]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([DisplayedName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [DisplayedName]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PrintToolMaker],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PrintToolMaker]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Status],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Status]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CICReference],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CICReference]\n\t   ,CASE\n      WHEN [Enovia] = 'True' THEN 1      \n      WHEN [Enovia] = 'False' THEN 0\n       ELSE [Enovia]\n       END AS [Enovia]\n\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AFPP],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [AFPP]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([FPP],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [FPP]\n\t   ,CASE\n         WHEN [BIS] = 'True' THEN 1      \n        WHEN [BIS] = 'False' THEN 0\n        ELSE [BIS]\n        END AS [BIS]\n\t   ,[RepId]\n\t   ,CASE\n        WHEN [RDT] = 'True' THEN 1      \n        WHEN [RDT] = 'False' THEN 0\n       ELSE [RDT]\n        END AS [RDT]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PurchaseOrder],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PurchaseOrder]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackagingCQV],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackagingCQV]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Substrate],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Substrate]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SpecialPrintFeature],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SpecialPrintFeature]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SalesSamples],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SalesSamples]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CaseType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CaseType]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PalletPattern],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PalletPattern]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SubstrateColour],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SubstrateColour]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MaxStackHeight],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaxStackHeight]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CaseOutsideDimensions],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CaseOutsideDimensions]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CUGrossWeight],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CUGrossWeight]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CUNetWeight],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CUNetWeight]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MPMSName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MPMSName]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MPMSDescription],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MPMSDescription]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackagingMaterialDescription],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackagingMaterialDescription]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MaterialCategory],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaterialCategory]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SuppressedGTIN],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SuppressedGTIN]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([ProductType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [ProductType]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MaterialName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaterialName]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SubBrand],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SubBrand]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([EnoviaObjectId],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [EnoviaObjectId]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PMPStatus],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PMPStatus]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PMPTitle],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PMPTitle]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PMPDescription],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PMPDescription]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PreviousPMP],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PreviousPMP]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PreviousFPP],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PreviousFPP]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechnicalDrawingFileLocation],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechnicalDrawingFileLocation]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingFileName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingFileName]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingState],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingState]\n\t   ,[TechnicalDrawingPrimaryFolderId]\n\t   ,[TechnicalDrawingAltFolderId]\n\t   ,[PMPNumLanguages]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingRevision],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingRevision]\n\t   ,[CopyVersionLinkedFA]\n\t   ,[CopyVersionLinkedCIC]\n\t   ,CASE\n       WHEN [CIC] = 'True' THEN 1      \n       WHEN [CIC] = 'False' THEN 0\n      ELSE [CIC]\n      END AS [CIC]\n\n\t   ,[LatestCopyXMLVersion]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([LatestCopyXMLState],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [LatestCopyXMLState]\n\t   ,CASE\n     WHEN [Obsolete] = 'True' THEN 1      \n     WHEN [Obsolete] = 'False' THEN 0\n      ELSE [Obsolete]\n      END AS [Obsolete]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CopyElementCount],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CopyElementCount]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CaseInsideDimensions],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CaseInsideDimensions]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingWithVerEnovia],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingWithVerEnovia]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([LocalInformation],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [LocalInformation]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Othercomment],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Othercomment]\n\t   ,CASE\n     WHEN [IsPoaOnHold] = 'True' THEN 1      \n     WHEN [IsPoaOnHold] = 'False' THEN 0\n     ELSE [IsPoaOnHold]\n     END AS [IsPoaOnHold]\n     ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SecondaryPrinter],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SecondaryPrinter]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AssemblyRework],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [AssemblyRework]\n FROM [dbo].[tbl_pg_poa]",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "database": "MCGDataFactory"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "dce8062b-aeb5-4bcd-a38a-dc1d449a061f"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DelimitedTextSink",
+            "formatSettings": {
+              "type": "DelimitedTextWriteSettings",
+              "quoteAllText": true,
+              "fileExtension": ".txt"
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Full",
+                  "fileName": {
+                    "value": "@concat('MYSGSEU','_','tbl_pg_poa','.csv')",
+                    "type": "Expression"
+                  }
+                },
+                "columnDelimiter": "^",
+                "rowDelimiter": "\r\n",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "MYSGSEU_tbl_pg_poa_FULL",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "\tSELECT NULL AS SYS_CHANGE_VERSION\n       ,NULL AS SYS_CHANGE_CREATION_VERSION\n       ,NULL AS SYS_CHANGE_OPERATION\n       ,NULL AS SYS_CHANGE_COLUMNS\n       ,NULL AS SYS_CHANGE_CONTEXT\n       ,NULL AS CT_POAId\n\t   ,[POAId]\n       ,[PDRId]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([POANumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [POANumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AdditionalDesc],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [AdditionalDesc]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([BrandInfo],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [BrandInfo]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Brand],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Brand]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Item],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Item]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Format],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Format]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackSize],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackSize]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackSizeUnit],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackSizeUnit]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CountryIcons],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CountryIcons]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CountriesOfSale],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CountriesOfSale]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Languages],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Languages]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([ManufacturingPlants],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [ManufacturingPlants]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingWithVer],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingWithVer]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PrintingProcess],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PrintingProcess]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([InsidePrintingIPMSNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [InsidePrintingIPMSNumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackMaterialType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackMaterialType]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackComponentType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackComponentType]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([FinishedProductCode],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [FinishedProductCode]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([COBarcode],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [COBarcode]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Printer],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Printer]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([NewIPMSNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [NewIPMSNumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([OldIPMSNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [OldIPMSNumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Colours],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Colours]\n\t   ,[LastUpdate]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([ProductExtraVariant],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [ProductExtraVariant]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MarketingCountry],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MarketingCountry]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([GCAS],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [GCAS]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SupplierCode],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SupplierCode]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TPOANumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TPOANumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MPMSNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MPMSNumber]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackagingLevel],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackagingLevel]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CUBarcode],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CUBarcode]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CaseCount],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CaseCount]\n\t   ,[SiteId]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([DisplayedName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [DisplayedName]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PrintToolMaker],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PrintToolMaker]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Status],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Status]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CICReference],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CICReference]\n\t   ,CASE\n      WHEN [Enovia] = 'True' THEN 1      \n      WHEN [Enovia] = 'False' THEN 0\n       ELSE [Enovia]\n       END AS [Enovia]\n\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AFPP],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [AFPP]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([FPP],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [FPP]\n\t   ,CASE\n         WHEN [BIS] = 'True' THEN 1      \n        WHEN [BIS] = 'False' THEN 0\n        ELSE [BIS]\n        END AS [BIS]\n\t   ,[RepId]\n\t   ,CASE\n        WHEN [RDT] = 'True' THEN 1      \n        WHEN [RDT] = 'False' THEN 0\n       ELSE [RDT]\n        END AS [RDT]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PurchaseOrder],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PurchaseOrder]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackagingCQV],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackagingCQV]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Substrate],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Substrate]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SpecialPrintFeature],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SpecialPrintFeature]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SalesSamples],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SalesSamples]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CaseType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CaseType]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PalletPattern],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PalletPattern]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SubstrateColour],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SubstrateColour]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MaxStackHeight],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaxStackHeight]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CaseOutsideDimensions],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CaseOutsideDimensions]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CUGrossWeight],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CUGrossWeight]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CUNetWeight],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CUNetWeight]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MPMSName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MPMSName]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MPMSDescription],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MPMSDescription]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PackagingMaterialDescription],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PackagingMaterialDescription]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MaterialCategory],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaterialCategory]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SuppressedGTIN],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SuppressedGTIN]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([ProductType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [ProductType]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MaterialName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaterialName]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SubBrand],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SubBrand]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([EnoviaObjectId],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [EnoviaObjectId]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PMPStatus],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PMPStatus]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PMPTitle],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PMPTitle]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PMPDescription],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PMPDescription]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PreviousPMP],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PreviousPMP]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([PreviousFPP],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [PreviousFPP]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechnicalDrawingFileLocation],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechnicalDrawingFileLocation]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingFileName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingFileName]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingState],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingState]\n\t   ,[TechnicalDrawingPrimaryFolderId]\n\t   ,[TechnicalDrawingAltFolderId]\n\t   ,[PMPNumLanguages]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingRevision],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingRevision]\n\t   ,[CopyVersionLinkedFA]\n\t   ,[CopyVersionLinkedCIC]\n\t   ,CASE\n       WHEN [CIC] = 'True' THEN 1      \n       WHEN [CIC] = 'False' THEN 0\n      ELSE [CIC]\n      END AS [CIC]\n\n\t   ,[LatestCopyXMLVersion]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([LatestCopyXMLState],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [LatestCopyXMLState]\n\t   ,CASE\n     WHEN [Obsolete] = 'True' THEN 1      \n     WHEN [Obsolete] = 'False' THEN 0\n      ELSE [Obsolete]\n      END AS [Obsolete]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CopyElementCount],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CopyElementCount]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CaseInsideDimensions],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [CaseInsideDimensions]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([TechDrawingWithVerEnovia],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [TechDrawingWithVerEnovia]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([LocalInformation],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [LocalInformation]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Othercomment],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Othercomment]\n\t   ,CASE\n     WHEN [IsPoaOnHold] = 'True' THEN 1      \n     WHEN [IsPoaOnHold] = 'False' THEN 0\n     ELSE [IsPoaOnHold]\n     END AS [IsPoaOnHold]\n     ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SecondaryPrinter],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SecondaryPrinter]\n\t   ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([AssemblyRework],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [AssemblyRework]\n FROM [dbo].[tbl_pg_poa]",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "database": "MCGDataFactory"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "dce8062b-aeb5-4bcd-a38a-dc1d449a061f"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "ParquetSink",
+            "formatSettings": {
+              "type": "ParquetWriteSettings",
+              "enableVertiParquet": true
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Parquet",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Full",
+                  "fileName": {
+                    "value": "@concat('MYSGSEU','_','tbl_pg_poa','.parquet')",
+                    "type": "Expression"
+                  }
+                },
+                "compressionCodec": "snappy"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "MYSGSEU_tbl_pg_poa",
+        "dependsOn": [
+          {
+            "activity": "MYSGSEU_tbl_pg_poa_FULL",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "storeSettings": {
+              "type": "LakehouseReadSettings",
+              "recursive": true,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Full",
+                  "fileName": "MYSGSEU_tbl_pg_poa.csv"
+                },
+                "columnDelimiter": "^",
+                "rowDelimiter": "\r\n",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_pg_poa_FULL"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "File_To_Table",
+        "dependsOn": [
+          {
+            "activity": "MYSGSEU_tbl_pg_poa",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "23d6a899-a63c-985f-4174-06b9b57d228f",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "in_mode": {
+              "value": "FULL",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "tbl_pg_poa_Notebook",
+        "dependsOn": [
+          {
+            "activity": "File_To_Table",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_pg_poa"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SILVER",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "aabf914c-0501-4c58-ba5b-4b0f05f4420f",
+                    "workspaceId": "c8d75176-b949-4f7e-a658-b996603ec8c3",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "SnowflakeSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE \"SILVER\".\"MYSGSEU\".\"tbl_pg_poa\";  \n",
+              "type": "Expression"
+            },
+            "importSettings": {
+              "type": "SnowflakeImportCopyCommand"
+            },
+            "datasetSettings": {
+              "type": "SnowflakeTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_pg_poa",
+                "database": "SILVER"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Fabric_To_SF_tbl_pg_poa",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "tbl_pg_poa_Notebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_pg_poa"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SILVER",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "05f4420f-4b0f-ba5b-4c58-0501aabf914c",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "SnowflakeSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE \"SILVER\".\"MYSGSEU\".\"tbl_pg_poa\";",
+              "type": "Expression"
+            },
+            "importSettings": {
+              "type": "SnowflakeImportCopyCommand"
+            },
+            "datasetSettings": {
+              "type": "SnowflakeTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_pg_poa",
+                "database": "SILVER"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "5d21465f-20b5-454e-a1d5-e8e11b3c796a"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Fabric_To_Dev_SF_tbl_pg_poa",
+        "dependsOn": [
+          {
+            "activity": "tbl_pg_poa_Notebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

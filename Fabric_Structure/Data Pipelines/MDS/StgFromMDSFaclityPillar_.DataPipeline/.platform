@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "StgFromMDSFaclityPillar_"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0a59b233-eeb3-829d-4e2f-b1a45a4df1bf"
+  }
+}

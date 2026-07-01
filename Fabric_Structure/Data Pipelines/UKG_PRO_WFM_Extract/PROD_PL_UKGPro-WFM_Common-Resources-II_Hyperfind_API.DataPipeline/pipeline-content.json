@@ -1,0 +1,253 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "WebActivity",
+        "typeProperties": {
+          "method": "POST",
+          "relativeUrl": "/api/authentication/access_token/",
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "body": {
+            "value": "grant_type=password&client_id=@{pipeline().parameters.client_id}&client_secret=@{pipeline().parameters.client_secret}&username=@{pipeline().parameters.username}&password=@{pipeline().parameters.password}&auth_chain=OAuthLdapService",
+            "type": "Expression"
+          }
+        },
+        "externalReferences": {
+          "connection": "c3dd71f5-8c6b-479d-a576-74b4deda8ca7"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Retrieve_Tokens",
+        "dependsOn": []
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "access_token",
+          "value": {
+            "value": "@activity('Retrieve_Tokens').output.access_token",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set Access Token",
+        "dependsOn": [
+          {
+            "activity": "Retrieve_Tokens",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "requestMethod": "GET",
+            "additionalHeaders": {
+              "Authorization": {
+                "value": "@variables('access_token')",
+                "type": "Expression"
+              },
+              "Content-Type": "application/json"
+            },
+            "paginationRules": {
+              "supportRFC5988": "true"
+            },
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "datasetSettings": {
+              "type": "RestResource",
+              "typeProperties": {
+                "relativeUrl": "/api/v1/commons/hyperfind"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "c3dd71f5-8c6b-479d-a576-74b4deda8ca7"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "applyVOrder": false,
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "UKG",
+                "table": "Hyperfind"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "hyperfindQueries.id",
+                  "type": "Int64"
+                },
+                "sink": {
+                  "name": "hyperfindQueries.id",
+                  "physicalType": "long"
+                }
+              },
+              {
+                "source": {
+                  "name": "hyperfindQueries.name",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "hyperfindQueries.name",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "hyperfindQueries.description",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "hyperfindQueries.description",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "hyperfindQueries.visibility.id",
+                  "type": "Int64"
+                },
+                "sink": {
+                  "name": "hyperfindQueries.visibility.id",
+                  "physicalType": "long"
+                }
+              },
+              {
+                "source": {
+                  "name": "hyperfindQueries.visibility.name",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "hyperfindQueries.visibility.name",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "hyperfindQueries.usageType",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "hyperfindQueries.usageType",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "hyperfindQueries.persistentId",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "hyperfindQueries.persistentId",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "hyperfindQueries.inclusiveExclusivefilterType",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "hyperfindQueries.inclusiveExclusivefilterType",
+                  "physicalType": "string"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            },
+            "columnFlattenSettings": {
+              "treatArrayAsString": false,
+              "treatStructAsString": false,
+              "flattenColumnDelimiter": "."
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Retrieve HyperFind",
+        "dependsOn": [
+          {
+            "activity": "Set Access Token",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "relative_url": {
+        "type": "string",
+        "defaultValue": "/api/authentication/access_token/"
+      },
+      "username": {
+        "type": "string",
+        "defaultValue": "APIUser"
+      },
+      "password": {
+        "type": "string",
+        "defaultValue": "lW%?65VI20eW"
+      },
+      "client_id": {
+        "type": "string",
+        "defaultValue": "zrEdD3dOom4VnQ9N01xOpgFPFr2olulP"
+      },
+      "client_secret": {
+        "type": "string",
+        "defaultValue": "b7IPodFJ4hd90MGz"
+      }
+    },
+    "variables": {
+      "access_token": {
+        "type": "String"
+      }
+    }
+  }
+}

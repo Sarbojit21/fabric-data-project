@@ -1,0 +1,42 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Script1",
+        "type": "Script",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "GLOBAL_EDW",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "c2rbjb2faruufollpwcl3w3nue-ozi5pscjxf7e7jsyxglgapwiym.datawarehouse.fabric.microsoft.com",
+              "artifactId": "175895f8-4d92-40a3-9ccd-68e8e9fa96b7",
+              "workspaceId": "c8d75176-b949-4f7e-a658-b996603ec8c3"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "WITH PlantSpecificAggregates AS\n(\n    SELECT\n        f.[OPERATING_PLNT_KEY],\n        f.[PARNT_CUST_KEY],\n        SUM(f.[ACTUAL_WRK_IN_HRS]) AS Total_Hours\n    FROM [GLOBAL_EDW].[Propelis].[EDW_T_FACT_PRD_TMCONFS_CUR_D] f\n    INNER JOIN [GLOBAL_EDW].[Propelis].[POSTING_DATE] d\n        ON f.[PSTNG_DATE_KEY] = d.[DATE_KEY]\n    WHERE \n        d.[Posting Date] >= DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)\n        AND d.[Posting Date] <= EOMONTH(GETDATE(), -1)\n    GROUP BY\n        f.[OPERATING_PLNT_KEY],\n        f.[PARNT_CUST_KEY]\n),\nRankedCustomers AS\n(\n    SELECT\n        [OPERATING_PLNT_KEY],\n        [PARNT_CUST_KEY],\n        Total_Hours,\n        ROW_NUMBER() OVER (\n            PARTITION BY [OPERATING_PLNT_KEY]\n            ORDER BY Total_Hours DESC\n        ) AS rn\n    FROM PlantSpecificAggregates\n)\n\nUPDATE tgt\nSET\n    tgt.[Last24M_Total_Hours]   = r.Total_Hours,\n    tgt.[Last24M_Customer_Rank] = r.rn\nFROM [GLOBAL_EDW].[Propelis].[EDW_T_FACT_PRD_TMCONFS_CUR_D] tgt\nINNER JOIN RankedCustomers r\n    ON tgt.[OPERATING_PLNT_KEY] = r.[OPERATING_PLNT_KEY]\n   AND tgt.[PARNT_CUST_KEY]     = r.[PARNT_CUST_KEY];\n",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        }
+      }
+    ]
+  }
+}
