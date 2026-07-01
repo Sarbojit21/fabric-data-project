@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Ultipro__PayType"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d2c1a0a7-8524-bce7-4cc3-38beb94cca70"
+  }
+}

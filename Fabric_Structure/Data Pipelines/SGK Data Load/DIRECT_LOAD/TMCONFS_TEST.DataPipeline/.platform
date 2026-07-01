@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "TMCONFS_TEST"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4680fcbd-73c2-b311-4304-7b03770f2dbc"
+  }
+}

@@ -1,0 +1,680 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": "\r\n\r\n    \tWITH CTE_AUFNR AS\r\n    \t(\r\n        -- Changed via AFRU (confirmation) timestamps\r\n        \tSELECT AUFK.AUFNR\r\n        \tFROM ECC_CORE.ECC_CORE.AUFK  WITH (NOLOCK)\r\n\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFKO WITH (NOLOCK) \r\n\t\t\t\tON AUFK.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AUFK.AUFNR  = AFKO.AUFNR\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFIH WITH (NOLOCK) \r\n\t\t\t\tON  AFIH.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AFIH.AUFNR  = AFKO.AUFNR\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFVC WITH (NOLOCK) \r\n\t\t\t\tON  AFVC.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AFVC.AUFPL  = AFKO.AUFPL\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFRU WITH (NOLOCK) \r\n\t\t\t\tON  AFRU.MANDT  = AFVC.MANDT\r\n\t\t\t\tAND AFRU.RUECK  = AFVC.RUECK\r\n\t\r\n        \tWHERE  CONVERT(DATE, LEFT(AFRU.UPDATETS, 8), 112) >= '2024-01-01'\r\n\t\r\n        \tUNION\r\n\t\r\n        \t-- Changed via AFVC (operation) timestamps\r\n\t\r\n        \tSELECT AUFK.AUFNR\r\n\t\t\tFROM ECC_CORE.ECC_CORE.AUFK  WITH (NOLOCK)\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFKO WITH (NOLOCK) \r\n\t\t\t\tON  AUFK.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AUFK.AUFNR  = AFKO.AUFNR\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFIH WITH (NOLOCK) \r\n\t\t\t\tON  AFIH.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AFIH.AUFNR  = AFKO.AUFNR\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFVC WITH (NOLOCK) \r\n\t\t\t\tON  AFVC.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AFVC.AUFPL  = AFKO.AUFPL\r\n\t\r\n        \tWHERE  CONVERT(DATE, LEFT(AFVC.UPDATETS, 8), 112) >= '2024-01-01'\r\n\t\r\n        \tUNION\r\n\t\r\n        \t-- Changed via AUFK (order header) timestamps\r\n\t\r\n        \tSELECT AUFNR\r\n        \tFROM ECC_CORE.ECC_CORE.AUFK WITH (NOLOCK)\r\n\t\r\n        \tWHERE  CONVERT(DATE, LEFT(AUFK.UPDATETS, 8), 112) >= '2024-01-01'\r\n\t\r\n        \tUNION\r\n\t\r\n        \t-- Changed via AFIH (maintenance order info) timestamps\r\n\t\r\n        \tSELECT AUFNR\r\n        \tFROM   ECC_CORE.ECC_CORE.AFIH WITH (NOLOCK)\r\n\t\r\n        \tWHERE  CONVERT(DATE, LEFT(AFIH.UPDATETS, 8), 112) >= '2024-01-01'\r\n\t\r\n        \tUNION\r\n\t\r\n        \t-- Changed via AFKO (order routing) timestamps\r\n\t\r\n        \tSELECT AUFNR\r\n        \tFROM   ECC_CORE.ECC_CORE.AFKO WITH (NOLOCK)\r\n\t\r\n        \tWHERE  CONVERT(DATE, LEFT(AFKO.UPDATETS, 8), 112) >= '2024-01-01'\r\n\t\r\n        \tUNION\r\n\t\r\n        \t-- Orders where operation status (JEST) changed to RELE (I0010)\r\n\t\r\n        \tSELECT DISTINCT AUFK.AUFNR\r\n        \tFROM   ECC_CORE.ECC_CORE.AUFK  WITH (NOLOCK)\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFKO WITH (NOLOCK) \r\n\t\t\t\tON  AUFK.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AUFK.AUFNR  = AFKO.AUFNR\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFIH WITH (NOLOCK) \r\n\t\t\t\tON  AFIH.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AFIH.AUFNR  = AFKO.AUFNR\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFVC WITH (NOLOCK) \r\n\t\t\t\tON  AFVC.MANDT  = AFKO.MANDT\r\n\t\t\t\tAND AFVC.AUFPL  = AFKO.AUFPL\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.JEST WITH (NOLOCK) \r\n\t\t\t\tON  JEST.MANDT   = AFVC.MANDT\r\n\t\t\t\tAND JEST.OBJNR   = AFVC.OBJNR\r\n\t\r\n        \tWHERE  JEST.STAT = 'I0010'\r\n        \t\tAND  CONVERT(DATE, LEFT(JEST.UPDATETS, 8), 112) >= '2024-01-01'\r\n\t\t),\r\n\r\n    /* =========================================================================\r\n       STEP 2a : Pull AUFK header fields for each changed order\r\n       ========================================================================= */\r\n\r\n    \tCTE_AUFK AS\r\n    \t(\r\n        \tSELECT\r\n            \tAUFK.MANDT      AS AUFK_MANDT,\r\n            \tAUFK.AUFNR      AS AUFK_AUFNR,\r\n            \tAUFK.BUKRS      AS AUFK_BUKRS,\r\n            \tAUFK.ERDAT      AS AUFK_ERDAT,\r\n            \tAUFK.KDAUF      AS AUFK_KDAUF,\r\n            \tAUFK.KDPOS      AS AUFK_KDPOS,\r\n            \tAUFK.PRCTR      AS AUFK_PRCTR,\r\n            \tAUFK.IDAT2      AS AUFK_IDAT2\r\n        \tFROM   ECC_CORE.ECC_CORE.AUFK WITH (NOLOCK)\r\n\r\n        \tINNER JOIN CTE_AUFNR \r\n\t\t\t\tON CTE_AUFNR.AUFNR = AUFK.AUFNR\r\n\t\t),\r\n\r\n    /* =========================================================================\r\n       STEP 2b : Collect released-status flag per operation object\r\n                 (JEST STAT = 'I0010' = RELeased, INACT <> 'X')\r\n       ========================================================================= */\r\n\r\n    \tCTE_JEST AS\r\n    \t(\r\n        \tSELECT DISTINCT\r\n            \tAFVC.OBJNR,\r\n            \tJEST.STAT\r\n        \tFROM  CTE_AUFNR\r\n\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFKO WITH (NOLOCK) \r\n\t\t\t\tON  CTE_AUFNR.AUFNR = AFKO.AUFNR\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFIH WITH (NOLOCK) \r\n\t\t\t\tON  AFIH.MANDT = AFKO.MANDT\r\n\t\t\t\tAND AFIH.AUFNR = AFKO.AUFNR\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFVC WITH (NOLOCK) \r\n\t\t\t\tON  AFVC.MANDT = AFKO.MANDT\r\n\t\t\t\tAND AFVC.AUFPL = AFKO.AUFPL\r\n\t\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.JEST WITH (NOLOCK) \r\n\t\t\t\tON  JEST.MANDT  = AFVC.MANDT\r\n\t\t\t\tAND JEST.OBJNR  = AFVC.OBJNR\r\n\r\n        \tWHERE JEST.INACT <> 'X' AND  JEST.STAT = 'I0010'\r\n   \t \t),\r\n\r\n    /* =========================================================================\r\n       STEP 3 : Raw source extract  (mirrors DELTA_KEYS_TMCONFSO staging)\r\n                Joins all relevant SAP tables and adds partner / JEST flag.\r\n       ========================================================================= */\r\n\r\n    \tCTE_SOURCE AS\r\n\t\t(\r\n        \tSELECT DISTINCT\r\n            \tCTE_AUFK.AUFK_MANDT,\r\n            \tCTE_AUFK.AUFK_AUFNR,\r\n            \tCTE_AUFK.AUFK_BUKRS,\r\n            \tCTE_AUFK.AUFK_ERDAT,\r\n            \tCTE_AUFK.AUFK_KDAUF,\r\n            \tCTE_AUFK.AUFK_KDPOS,\r\n            \tCTE_AUFK.AUFK_PRCTR,\r\n            \tCTE_AUFK.AUFK_IDAT2,\r\n            \tAFKO.AUFPL          AS AFKO_AUFPL,\r\n            \tAFIH.IWERK          AS AFIH_IWERK,\r\n            \tAFVC.APLZL          AS AFVC_APLZL,\r\n            \tAFVC.ARBID          AS AFVC_ARBID,\r\n            \tAFVC.KTSCH          AS AFVC_KTSCH,\r\n            \tAFVC.LTXA1          AS AFVC_LTXA1,\r\n            \tAFVC.PLNFL          AS AFVC_PLNFL,\r\n            \tAFVC.RUECK          AS AFVC_RUECK,\r\n            \tAFVC.VORNR          AS AFVC_VORNR,\r\n            \tAFRU.BEMOT          AS AFRU_BEMOT,\r\n            \tAFRU.BUDAT          AS AFRU_BUDAT,\r\n            \tAFRU.ERNAM          AS AFRU_ERNAM,\r\n            \tAFRU.ERSDA          AS AFRU_ERSDA,\r\n            \tAFRU.GRUND          AS AFRU_GRUND,\r\n            \tAFRU.ISMNE          AS AFRU_ISMNE,\r\n            \tAFRU.ISMNW          AS AFRU_ISMNW,\r\n            \tAFRU.LEARR          AS AFRU_LEARR,\r\n            \tAFRU.LTXA1          AS AFRU_LTXA1,\r\n            \tAFRU.OFMNE          AS AFRU_OFMNE,\r\n            \tAFRU.OFMNW          AS AFRU_OFMNW,\r\n            \tAFRU.PERNR          AS AFRU_PERNR,\r\n            \tAFRU.RMZHL          AS AFRU_RMZHL,\r\n            \tAFRU.STZHL          AS AFRU_STZHL,\r\n            \tAFRU.WERKS          AS AFRU_WERKS,\r\n            \tAFVU.USR04          AS AFVU_USR04,\r\n            \tVBAK.KUNNR          AS VBAK_KUNNR,\r\n\t\t\t\tVBAK.SPART          AS VBAK_SPART,\r\n            \tVBAK.VKORG          AS VBAK_VKORG,\r\n            \tVBAK.VTWEG          AS VBAK_VTWEG,\r\n            \tVBAK.ZZMARKET_CODE  AS VBAK_ZZMARKET_CODE,\r\n            \tCRCO.KOSTL          AS CRCO_KOSTL,\r\n\t\r\n            -- AFRU_AUERU: 'Y' if operation is in Released status, else 'N'\r\n\t\r\n            \tCASE WHEN CTE_JEST.STAT = 'I0010' THEN 'Y' ELSE 'N' END AS AFRU_AUERU,\r\n\t\r\n            -- ZH partner (parent customer) from KNVP\r\n\t\r\n            \tKNVP.KUNN2          AS ZH_KUNN2\r\n\r\n        \tFROM   CTE_AUFK\r\n\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFKO WITH (NOLOCK)\r\n               ON  CTE_AUFK.AUFK_MANDT = AFKO.MANDT\r\n               AND CTE_AUFK.AUFK_AUFNR = AFKO.AUFNR\r\n\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFIH WITH (NOLOCK)\r\n               ON  AFIH.MANDT = AFKO.MANDT\r\n               AND AFIH.AUFNR = AFKO.AUFNR\r\n\r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFVC WITH (NOLOCK)\r\n               ON  AFVC.MANDT = AFKO.MANDT\r\n               AND AFVC.AUFPL = AFKO.AUFPL\r\n \r\n        \tINNER JOIN ECC_CORE.ECC_CORE.AFRU WITH (NOLOCK)\r\n               ON  AFRU.MANDT = AFVC.MANDT\r\n               AND AFRU.RUECK = AFVC.RUECK\r\n\r\n        \tLEFT  JOIN ECC_CORE.ECC_CORE.AFVV WITH (NOLOCK)\r\n               ON  AFVV.MANDT = AFVC.MANDT\r\n               AND AFVV.AUFPL = AFVC.AUFPL\r\n               AND AFVV.APLZL = AFVC.APLZL\r\n\r\n        \tLEFT  JOIN ECC_CORE.ECC_CORE.AFVU WITH (NOLOCK)\r\n               ON  AFVU.MANDT = AFVC.MANDT\r\n               AND AFVU.AUFPL = AFVC.AUFPL\r\n               AND AFVU.APLZL = AFVC.APLZL\r\n\r\n        \tLEFT  JOIN ECC_CORE.ECC_CORE.VBAK WITH (NOLOCK)\r\n               ON  VBAK.MANDT = CTE_AUFK.AUFK_MANDT\r\n               AND VBAK.VBELN = CTE_AUFK.AUFK_KDAUF\r\n\r\n        \tLEFT  JOIN ECC_CORE.ECC_CORE.CRCO WITH (NOLOCK)\r\n               ON  CRCO.MANDT = AFVC.MANDT\r\n               AND CRCO.OBJID = AFVC.ARBID\r\n               AND CRCO.ENDDA = '99991231'\r\n\r\n        \tLEFT  JOIN CTE_JEST\r\n               ON  CTE_JEST.OBJNR = AFVC.OBJNR\r\n\r\n        -- lookup_ext: KNVP partner function ZH (parent customer)\r\n\r\n        \tLEFT  JOIN ECC_CORE.ECC_CORE.KNVP WITH (NOLOCK)\r\n\t\t\t\tON  KNVP.KUNNR  = VBAK.KUNNR\r\n\t\t\t\tAND KNVP.VKORG  = VBAK.VKORG\r\n                AND KNVP.VTWEG  = VBAK.VTWEG\r\n               \tAND KNVP.SPART  = VBAK.SPART\r\n               \tAND KNVP.PARVW  = 'ZH'\r\n    \t),\r\n\r\n    /* =========================================================================\r\n       STEP 4 : Apply all dimension lookups and derived transformations\r\n                (mirrors Query_Lookups view in Data Services)\r\n                All lookup_ext() calls become LEFT JOINs on GLOBAL_EDW\r\n                dimension tables, filtered to ETL_CURR_RCD_IND = 'Y'.\r\n                Calculated columns:\r\n                  ACTUAL_WRK        : reverse sign if STZHL <> '00000000'\r\n                  ACTUAL_WRK_IN_HRS : convert MIN to HR, apply cancellation sign\r\n                  REMG_WRK_IN_HRS   : convert MIN to HR, apply cancellation sign\r\n                  WRK_IN_HRS_UOM    : hardcoded 'H'\r\n                  ETL_SRC_SYS_CD    : derived from MANDT\r\n       ========================================================================= */\r\n\r\n    \tCTE_TRANSFORMED AS\r\n    \t(\r\n        \tSELECT\r\n \r\n            /* --- Dimension surrogate keys (lookup_ext results) --- */\r\n \r\n            \tISNULL(D_SEG.SEG_KEY,             -1) AS SEGMENT_CD_KEY,\r\n            \tISNULL(D_SORD.SERVC_ORDER_KEY,    -1) AS SERVC_ORDER_KEY,\r\n            \tISNULL(D_CMPNY.CMPNY_KEY,         -1) AS CMPNY_KEY,\r\n            \tISNULL(D_PRCTR.PROFT_CNTR_KEY,    -1) AS PROFT_CNTR_KEY,\r\n            \tISNULL(D_SALORD.SALES_ORDER_KEY,  -1) AS SALES_ORDER_KEY,\r\n            \tISNULL(D_CUST.CUST_KEY,           -1) AS SOLDTO_CUST_KEY,\r\n            \tISNULL(D_WRKCTR.WRK_CNTR_KEY,     -1) AS WRK_CNTR_KEY,\r\n            \tISNULL(D_COSCTR.COST_CNTR_KEY,    -1) AS COST_CNTR_KEY,\r\n            \tISNULL(D_PSTDT.DATE_KEY,          -1) AS PSTNG_DATE_KEY,\r\n            \tISNULL(D_OPLNT.PLNT_KEY,          -1) AS OPERATING_PLNT_KEY,\r\n            \tISNULL(D_PERNR.PERSONEL_KEY,      -1) AS PERSONEL_NUM_KEY,\r\n            \tISNULL(D_ACTTYP.ACTIVITY_TYP_KEY, -1) AS ACTIVITY_TYP_KEY,\r\n            \tISNULL(D_PLPLNT.PLNT_KEY,         -1) AS PLNG_PLNT_KEY,\r\n            \tISNULL(D_SALAREA.SALES_AREA_KEY,  -1) AS SALES_AREA_KEY,\r\n            \tISNULL(D_CREDT.DATE_KEY,          -1) AS CREATED_ON_DATE_KEY,\r\n            \tISNULL(D_PCUST.CUST_KEY,          -1) AS PARNT_CUST_KEY,\r\n            \tISNULL(D_TECHDT.DATE_KEY,         -1) AS TCHNCL_COMPLETION_DATE_KEY,\r\n\t\r\n            /* --- Reason for variance description (TRUGT lookup) --- */\r\n\t\r\n            \tISNULL(TRG.GRDTX, '')           AS RSN_FOR_VRNC_DESC,\r\n\t\r\n            /* --- Accounting indicator description (TBMOTX lookup) --- */\r\n\t\r\n            \tISNULL(BMOT.BEMOT_TXT, '')      AS ACCTNG_IND_DESC,\r\n\t\r\n            /* --- Keys for target PK (renamed in Query_Rename) --- */\r\n\t\r\n            \tSRC.AFKO_AUFPL          AS OPERATION_TASK_LIST_ID,\r\n            \tSRC.AFVC_APLZL          AS OPERATION_COUNTER_ID,\r\n            \tSRC.AFVC_VORNR          AS OPERATION_ACTIVITY_ID,\r\n            \tSRC.AFVC_RUECK          AS OPERATION_CONFIRM_ID,\r\n            \tSRC.AFVC_PLNFL          AS OPERATION_SEQ_ID,\r\n            \t--SRC.AUFK_KDPOS          AS SALES_ORDER_ITM_NBR,\r\n\t\t\t\tCAST(SRC.AUFK_KDPOS AS VARCHAR(20)) AS SALES_ORDER_ITM_NBR,\r\n            \tSRC.AUFK_KDAUF          AS SALES_ORDER_ID,\r\n\t\r\n            /* --- Descriptive / measure columns --- */\r\n\t\r\n            \tSRC.AFVC_KTSCH          AS OPERATION_STD_TEXT,\r\n            \tSRC.AFVC_LTXA1          AS OPERATION_SHORT_TEXT,\r\n            \tSRC.AFRU_LTXA1          AS OPERATION_CONFIRM_TEXT,\r\n            \tSRC.AFRU_GRUND          AS RSN_FOR_VRNC,\r\n            \tSRC.AFRU_STZHL          AS CONFIRM_COUNTER_OF_CANCELLED_CO,\r\n            \tSRC.AFRU_AUERU          AS PARTIAL_FINAL_CONFIRM,\r\n            \tSRC.AFRU_BEMOT          AS ACCTNG_IND,\r\n            \tSRC.AFRU_ISMNE          AS ACTUAL_WRK_UOM,\r\n            \tSRC.AFRU_OFMNE          AS REMG_WRK_UOM,\r\n            \tSRC.AFRU_ERNAM          AS PERSON_WHO_ENTERERD,\r\n            \tSRC.AFRU_RMZHL          AS OPERATION_CONFIRM_COUNTER,\r\n            \tSRC.AFVU_USR04          AS ACCT_IND,\r\n\t\r\n            /* --- Date conversions (cf_varchar8_to_date: YYYYMMDD -> DATE) --- */\r\n\t\r\n            \tCASE\r\n            \t    WHEN LEN(SRC.AFRU_ERSDA) = 8 AND SRC.AFRU_ERSDA NOT IN ('00000000','')\r\n            \t    THEN TRY_CONVERT(DATE, SRC.AFRU_ERSDA, 112)\r\n            \t    ELSE NULL\r\n            \tEND AS ENTRY_CREATE_DATE,\r\n\t\r\n            /* --- Actual work: reverse sign when STZHL (cancellation) set --- */\r\n\t\r\n            \tCASE\r\n            \t    WHEN SRC.AFRU_STZHL <> '00000000'\r\n            \t    THEN SRC.AFRU_ISMNW * -1\r\n            \t    ELSE SRC.AFRU_ISMNW\r\n            \tEND AS ACTUAL_WRK,\r\n\t\r\n            \tSRC.AFRU_ISMNW          AS ACTUAL_WRK_RAW,\r\n            \tSRC.AFRU_OFMNW          AS REMG_WRK,\r\n\t\r\n            /* --- Actual work in hours (MIN -> HR, then apply sign) ---\r\n\t\t\t\tStep 1: if UOM = 'MIN', divide by 60, else keep as is\r\n\t\t\t\tStep 2: if cancellation row (STZHL <> '00000000'), negate         */\r\n\t\r\n            \tCASE\r\n            \t    WHEN SRC.AFRU_STZHL <> '00000000'\r\n            \t    THEN CASE\r\n            \t             WHEN UPPER(SRC.AFRU_ISMNE) = 'MIN'\r\n            \t             THEN (SRC.AFRU_ISMNW / 60.0) * -1\r\n            \t             ELSE SRC.AFRU_ISMNW * -1\r\n            \t         END\r\n            \t    ELSE CASE\r\n            \t             WHEN UPPER(SRC.AFRU_ISMNE) = 'MIN'\r\n            \t             THEN SRC.AFRU_ISMNW / 60.0\r\n            \t             ELSE SRC.AFRU_ISMNW\r\n            \t         END\r\n            \tEND AS ACTUAL_WRK_IN_HRS,\r\n\t\r\n            /* --- Remaining work in hours (same pattern, uses OFMNW/OFMNE) --- */\r\n\t\r\n            \tCASE\r\n            \t    WHEN SRC.AFRU_STZHL <> '00000000'\r\n            \t    THEN CASE\r\n            \t             WHEN UPPER(SRC.AFRU_OFMNE) = 'MIN'\r\n            \t             THEN (SRC.AFRU_OFMNW / 60.0) * -1\r\n            \t             ELSE SRC.AFRU_OFMNW * -1\r\n            \t         END\r\n            \t    ELSE CASE\r\n            \t             WHEN UPPER(SRC.AFRU_OFMNE) = 'MIN'\r\n            \t             THEN SRC.AFRU_OFMNW / 60.0\r\n            \t             ELSE SRC.AFRU_OFMNW\r\n            \t         END\r\n            \tEND AS REMG_WRK_IN_HRS,\r\n\t\r\n            \t'H' AS WRK_IN_HRS_UOM,\r\n\t\r\n            /* --- ETL system source code derived from client (MANDT) ---\r\n\t\t\t  cf_etl_src_sys_cd() function maps MANDT to source system code   */\r\n\t\r\n            \tCASE SRC.AUFK_MANDT\r\n            \t    WHEN '100' THEN 'ECC100'\r\n            \t    WHEN '200' THEN 'ECC200'\r\n            \t    WHEN '300' THEN 'ECC300'\r\n            \t    ELSE 'ECC' + SRC.AUFK_MANDT\r\n            \tEND AS ETL_SRC_SYS_CD,\r\n\t\r\n            \tSRC.AUFK_MANDT\r\n\r\n        \tFROM CTE_SOURCE AS SRC\r\n\r\n        \t/* -- Segment key lookup (VBAK_ZZMARKET_CODE -> EDW_T_D_MST_SEGMENT) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_SEGMENT_CUR_D   AS D_SEG\r\n        \t       ON  D_SEG.SEG_ID = SRC.VBAK_ZZMARKET_CODE\r\n        \t       AND D_SEG.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Service order key lookup (AUFK_AUFNR -> EDW_T_D_PRD_SERVORD) -- */\r\n\t\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_PRD_SERVORD_CUR_D   AS D_SORD\r\n        \t       ON  D_SORD.SERVC_ORDER     = SRC.AUFK_AUFNR\r\n        \t       AND D_SORD.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Company key lookup (AUFK_BUKRS -> EDW_T_D_MST_CMPNYCD) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_CMPNYCD_CUR_D   AS D_CMPNY\r\n        \t       ON  D_CMPNY.CMPNY_CD       = SRC.AUFK_BUKRS\r\n        \t       AND D_CMPNY.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Profit center key lookup (AUFK_PRCTR -> EDW_T_D_MST_PROFCTR) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_PROFCTR_CUR_D   AS D_PRCTR\r\n        \t       ON  D_PRCTR.PROFT_CNTR_ID  = SRC.AUFK_PRCTR\r\n        \t       AND D_PRCTR.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Sales order key lookup (AUFK_KDAUF -> EDW_T_D_SAL_SALORDH) -- */\r\n \r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_SAL_SALORDH_CUR_D   AS D_SALORD\r\n        \t       ON  D_SALORD.SALES_ORDER_ID = SRC.AUFK_KDAUF\r\n        \t       AND D_SALORD.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Sold-to customer key lookup (VBAK_KUNNR -> EDW_T_D_MST_CUSTOMR) -- */\r\n\t\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_CUSTOMR_CUR_D   AS D_CUST\r\n        \t       ON  D_CUST.CUST_ID          = SRC.VBAK_KUNNR\r\n        \t       AND D_CUST.ETL_CURR_RCD_IND  = 'Y'\r\n\t\r\n        \t/* -- Work center key lookup (AFVC_ARBID -> EDW_T_D_MST_WORKCTR) -- */\r\n \r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_WORKCTR_CUR_D   AS D_WRKCTR\r\n        \t       ON  D_WRKCTR.OBJ_ID         = SRC.AFVC_ARBID\r\n        \t       AND D_WRKCTR.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Cost center key lookup (CRCO_KOSTL -> EDW_T_D_MST_COSCNTR) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_COSCNTR_CUR_D   AS D_COSCTR\r\n        \t       ON  D_COSCTR.COST_CNTR_ID   = SRC.CRCO_KOSTL\r\n        \t       AND D_COSCTR.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Posting date key lookup (AFRU_BUDAT -> EDW_T_D_MST_DATE) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_DATE_CUR_D      AS D_PSTDT\r\n        \t       ON  D_PSTDT.DATE_KEY         = SRC.AFRU_BUDAT\r\n\t\r\n        \t/* -- Operating plant key (AFRU_WERKS -> EDW_T_D_MST_PLANT) -- */\r\n\t\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_PLANT_CUR_D     AS D_OPLNT\r\n        \t       ON  D_OPLNT.PLNT_ID          = SRC.AFRU_WERKS\r\n        \t       AND D_OPLNT.ETL_CURR_RCD_IND  = 'Y'\r\n\t\r\n        \t/* -- Personnel key (AFRU_PERNR -> EDW_T_D_MST_PERSONL) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_PERSONL_CUR_D   AS D_PERNR\r\n        \t       ON  D_PERNR.PERSONEL_NUM     = SRC.AFRU_PERNR\r\n        \t       AND D_PERNR.ETL_CURR_RCD_IND  = 'Y'\r\n\t\r\n        \t/* -- Activity type key (AFRU_LEARR -> EDW_T_D_MST_ACTTYPE) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_ACTTYPE_CUR_D   AS D_ACTTYP\r\n        \t       ON  D_ACTTYP.ACTIVITY_TYP_ID = SRC.AFRU_LEARR\r\n        \t       AND D_ACTTYP.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Planning plant key (AFIH_IWERK -> EDW_T_D_MST_PLANT) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_PLANT_CUR_D     AS D_PLPLNT\r\n        \t       ON  D_PLPLNT.PLNT_ID         = SRC.AFIH_IWERK\r\n        \t       AND D_PLPLNT.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Sales area key (VKORG/VTWEG/SPART -> EDW_T_D_SAL_SALAREA) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_SAL_SALAREA_CUR_D   AS D_SALAREA\r\n        \t       ON  D_SALAREA.SALES_ORGZTN   = SRC.VBAK_VKORG\r\n        \t       AND D_SALAREA.DISTRBN_CHNL   = SRC.VBAK_VTWEG\r\n        \t       AND D_SALAREA.DIVISION       = SRC.VBAK_SPART\r\n        \t       AND D_SALAREA.ETL_CURR_RCD_IND = 'Y'\r\n\t\r\n        \t/* -- Order creation date key (AUFK_ERDAT -> EDW_T_D_MST_DATE) -- */\r\n\t\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_DATE_CUR_D      AS D_CREDT\r\n        \t       ON  D_CREDT.DATE_KEY         = SRC.AUFK_ERDAT\r\n\t\r\n        \t/* -- Parent customer key (ZH_KUNN2 from KNVP -> EDW_T_D_MST_CUSTOMR) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_CUSTOMR_CUR_D   AS D_PCUST\r\n        \t       ON  D_PCUST.CUST_ID          = SRC.ZH_KUNN2\r\n        \t       AND D_PCUST.ETL_CURR_RCD_IND  = 'Y'\r\n\t\r\n        \t/* -- Technical completion date key (AUFK_IDAT2 -> EDW_T_D_MST_DATE) -- */\r\n\r\n        \tLEFT JOIN GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_D_MST_DATE_CUR_D      AS D_TECHDT\r\n        \t       ON  D_TECHDT.DATE_KEY        = SRC.AUFK_IDAT2\r\n\t\r\n        \t/* -- Reason for variance description (TRUGT lookup) -- */\r\n \r\n        \tLEFT JOIN ECC_CORE.ECC_CORE.TRUGT AS TRG WITH (NOLOCK)\r\n        \t       ON  TRG.SPRAS = 'E'\r\n        \t       AND TRG.WERKS = SRC.AFRU_WERKS\r\n        \t       AND TRG.GRUND = SRC.AFRU_GRUND\r\n\t\r\n        \t/* -- Accounting indicator description (TBMOTX lookup) -- */\r\n\r\n        \tLEFT JOIN ECC_CORE.ECC_CORE.TBMOTX  AS BMOT WITH (NOLOCK)\r\n        \t       ON  BMOT.SPRAS = 'E'\r\n        \t       AND BMOT.BEMOT = SRC.AFRU_BEMOT\r\n\t\r\n        \t/* Filter: only process rows where a valid service order key was resolved */\r\n\t\r\n        \tWHERE ISNULL(D_SORD.SERVC_ORDER_KEY, -1) <> -1\r\n\t\t\t\tAND TRY_CONVERT(DATE,SRC.AFRU_BUDAT,112) >= '2026-01-01'\r\n        \t\t--AND TRY_CONVERT(DATE,SRC.AFRU_BUDAT,112) < '2026-01-01'\r\n\t\t)\r\nSELECT *\r\nFROM CTE_TRANSFORMED;\r\n\r\n\r\n",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "database": "GLOBAL_EDW_DSD"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE GLOBAL_EDW.STG_Trans.EDW_T_F_PRD_TMCONFS_CUR_D_VI;",
+              "type": "Expression"
+            },
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "writeBehavior": "Insert",
+            "datasetSettings": {
+              "type": "DataWarehouseTable",
+              "typeProperties": {
+                "schema": "STG_Trans",
+                "table": "EDW_T_F_PRD_TMCONFS_CUR_D_VI"
+              },
+              "schema": [],
+              "connectionSettings": {
+                "name": "GLOBAL_EDW",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "e9fa96b7-68e8-9ccd-40a3-4d92175895f8",
+                    "endpoint": "c2rbjb2faruufollpwcl3w3nue-ozi5pscjxf7e7jsyxglgapwiym.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "externalReferences": {
+                    "connection": "58c93752-eeeb-4f41-a48e-9e35711f89cb"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "SEGMENT_CD_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "SEG_CD_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_TASK_LIST_ID",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "10"
+                },
+                "sink": {
+                  "name": "OPERATION_TASK_LIST_ID",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_COUNTER_ID",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "8"
+                },
+                "sink": {
+                  "name": "OPERATION_COUNTER_ID",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_ACTIVITY_ID",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "4"
+                },
+                "sink": {
+                  "name": "OPERATION_ACTIVITY_ID",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_CONFIRM_ID",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "10"
+                },
+                "sink": {
+                  "name": "OPERATION_CONFIRM_ID",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_SEQ_ID",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "6"
+                },
+                "sink": {
+                  "name": "OPERATION_SEQ_ID",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "PROFT_CNTR_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "PROFT_CNTR_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "SALES_ORDER_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "SALES_ORDER_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "SALES_ORDER_ITM_NBR",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "6"
+                },
+                "sink": {
+                  "name": "SALES_ORDER_ITM_NBR",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "CMPNY_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "CMPNY_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "WRK_CNTR_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "WRK_CNTR_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "COST_CNTR_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "COST_CNTR_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_STD_TEXT",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "7"
+                },
+                "sink": {
+                  "name": "OPERATION_STD_TEXT",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_SHORT_TEXT",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "40"
+                },
+                "sink": {
+                  "name": "OPERATION_SHORT_TEXT",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "PSTNG_DATE_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "PSTNG_DATE_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "PLNG_PLNT_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "PLNG_PLNT_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "ENTRY_CREATE_DATE",
+                  "type": "Date",
+                  "physicalType": "date"
+                },
+                "sink": {
+                  "name": "ENTRY_CREATE_DATE",
+                  "physicalType": "date"
+                }
+              },
+              {
+                "source": {
+                  "name": "PERSON_WHO_ENTERERD",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "12"
+                },
+                "sink": {
+                  "name": "PERSON_WHO_ENTERERD",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_CONFIRM_COUNTER",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "8"
+                },
+                "sink": {
+                  "name": "OPERATION_CONFIRM_COUNTER",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "ACTUAL_WRK",
+                  "type": "Decimal",
+                  "physicalType": "decimal",
+                  "scale": 1,
+                  "precision": 9
+                },
+                "sink": {
+                  "name": "ACTUAL_WRK",
+                  "physicalType": "decimal",
+                  "scale": 2,
+                  "precision": 8
+                }
+              },
+              {
+                "source": {
+                  "name": "ACTUAL_WRK_UOM",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "3"
+                },
+                "sink": {
+                  "name": "ACTUAL_WRK_UOM",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "ACCTNG_IND",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "2"
+                },
+                "sink": {
+                  "name": "ACCTNG_IND",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "REMG_WRK",
+                  "type": "Decimal",
+                  "physicalType": "decimal",
+                  "scale": 1,
+                  "precision": 7
+                },
+                "sink": {
+                  "name": "REMG_WRK",
+                  "physicalType": "decimal",
+                  "scale": 2,
+                  "precision": 8
+                }
+              },
+              {
+                "source": {
+                  "name": "REMG_WRK_UOM",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "3"
+                },
+                "sink": {
+                  "name": "REMG_WRK_UOM",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "ACTUAL_WRK_IN_HRS",
+                  "type": "Decimal",
+                  "physicalType": "decimal",
+                  "scale": 6,
+                  "precision": 15
+                },
+                "sink": {
+                  "name": "ACTUAL_WRK_IN_HRS",
+                  "physicalType": "decimal",
+                  "scale": 2,
+                  "precision": 8
+                }
+              },
+              {
+                "source": {
+                  "name": "REMG_WRK_IN_HRS",
+                  "type": "Decimal",
+                  "physicalType": "decimal",
+                  "scale": 6,
+                  "precision": 15
+                },
+                "sink": {
+                  "name": "REMG_WRK_IN_HRS",
+                  "physicalType": "decimal",
+                  "scale": 2,
+                  "precision": 8
+                }
+              },
+              {
+                "source": {
+                  "name": "WRK_IN_HRS_UOM",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "1"
+                },
+                "sink": {
+                  "name": "WRK_IN_HRS_UOM",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "ACTIVITY_TYP_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "ACTIVITY_TYP_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATION_CONFIRM_TEXT",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "40"
+                },
+                "sink": {
+                  "name": "OPERATION_CONFIRM_TEXT",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "RSN_FOR_VRNC",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "4"
+                },
+                "sink": {
+                  "name": "RSN_FOR_VRNC",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "CONFIRM_COUNTER_OF_CANCELLED_CO",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "8"
+                },
+                "sink": {
+                  "name": "CONFIRM_COUNTER_OF_CANCELLED_CO",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "SOLDTO_CUST_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "SOLD_TO_CUST_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "PERSONEL_NUM_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "PERSONEL_NUM_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "ETL_SRC_SYS_CD",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "6"
+                },
+                "sink": {
+                  "name": "ETL_SRC_SYS_CD",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "SERVC_ORDER_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "SERVC_ORDER_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "SALES_AREA_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "SALES_AREA_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "OPERATING_PLNT_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "OPERATING_PLNT_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "CREATED_ON_DATE_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "SERVC_ORDER_CREATE_DATE_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "ACCT_IND",
+                  "type": "Decimal",
+                  "physicalType": "decimal",
+                  "scale": 3,
+                  "precision": 13
+                },
+                "sink": {
+                  "name": "ACCT_IND",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "PARNT_CUST_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "PARNT_CUST_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "RSN_FOR_VRNC_DESC",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "30"
+                },
+                "sink": {
+                  "name": "RSN_FOR_VRNC_DESC",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "PARTIAL_FINAL_CONFIRM",
+                  "type": "String",
+                  "physicalType": "varchar",
+                  "length": "1"
+                },
+                "sink": {
+                  "name": "PARTIAL_FINAL_CONFIRM",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "TCHNCL_COMPLETION_DATE_KEY",
+                  "type": "Int32",
+                  "physicalType": "int"
+                },
+                "sink": {
+                  "name": "TCHNCL_COMPLETION_DATE_KEY",
+                  "physicalType": "int"
+                }
+              },
+              {
+                "source": {
+                  "name": "SALES_ORDER_ID",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "10"
+                },
+                "sink": {
+                  "name": "SALES_ORDER_ID",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              },
+              {
+                "source": {
+                  "name": "ACCTNG_IND_DESC",
+                  "type": "String",
+                  "physicalType": "nvarchar",
+                  "length": "25"
+                },
+                "sink": {
+                  "name": "ACCTNG_IND_DESC",
+                  "physicalType": "varchar",
+                  "length": "8000"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "EDW_T_F_PRD_TMCONFS_CUR_D_AI",
+        "dependsOn": []
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "scripts": [
+            {
+              "text": {
+                "value": "EXEC [Propelis].[Proc_EDW_T_FACT_PRD_TMCONFS_CUR_D-Clone]'DELTA'",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "connectionSettings": {
+          "name": "GLOBAL_EDW",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "e9fa96b7-68e8-9ccd-40a3-4d92175895f8",
+              "endpoint": "c2rbjb2faruufollpwcl3w3nue-ozi5pscjxf7e7jsyxglgapwiym.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "58c93752-eeeb-4f41-a48e-9e35711f89cb"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "DELTA_PROCEDURE",
+        "dependsOn": [
+          {
+            "activity": "EDW_T_F_PRD_TMCONFS_CUR_D_AI",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

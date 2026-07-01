@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Ultipro__Earnings"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2c3648ff-381e-9146-4fa2-c04679126534"
+  }
+}

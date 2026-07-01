@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Ultipro__In_Out_Punches"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "28e2bc42-9200-a98e-4617-f86c4b354a9c"
+  }
+}
