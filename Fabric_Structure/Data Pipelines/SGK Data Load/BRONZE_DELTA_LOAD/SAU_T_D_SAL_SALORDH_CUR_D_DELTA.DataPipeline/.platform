@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "SAU_T_D_SAL_SALORDH_CUR_D_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "98685b1b-109b-a5ce-4e9c-369e37a7e481"
+  }
+}

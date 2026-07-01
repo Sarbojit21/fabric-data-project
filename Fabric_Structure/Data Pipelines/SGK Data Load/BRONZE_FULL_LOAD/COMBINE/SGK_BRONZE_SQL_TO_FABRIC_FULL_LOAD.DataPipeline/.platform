@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "SGK_BRONZE_SQL_TO_FABRIC_FULL_LOAD"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7a6d9bcc-c78f-866b-481f-270592418479"
+  }
+}

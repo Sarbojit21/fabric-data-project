@@ -1,0 +1,198 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "LookupNew",
+        "type": "Lookup",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT DISTINCT \n\t\tISNULL(MAX(CT.SYS_CHANGE_VERSION),0) AS SYS_CHANGE_VERSION\t   \nFROM CHANGETABLE(CHANGES [GLOBAL_EDW].[SAU_T_D_SAL_SALORDH_CUR_D],0) CT\nLEFT JOIN [GLOBAL_EDW].[SAU_T_D_SAL_SALORDH_CUR_D] F\nON CT.SALES_ORDER_KEY        = F.SALES_ORDER_KEY\nWHERE ISNULL(CT.[SYS_CHANGE_VERSION],'') > ''",
+              "type": "Expression"
+            },
+            "queryTimeout": "02:00:00",
+            "partitionOption": "None"
+          },
+          "datasetSettings": {
+            "annotations": [],
+            "type": "SqlServerTable",
+            "schema": [],
+            "typeProperties": {
+              "database": "GLOBAL_EDW_DSP"
+            },
+            "externalReferences": {
+              "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+            }
+          }
+        }
+      },
+      {
+        "name": "LookupOld",
+        "type": "Lookup",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT SYS_CHANGE_VERSION FROM ChangeTracking_version_Update WHERE TableName = 'SAU_T_D_SAL_SALORDH_CUR_D'\n",
+              "type": "Expression"
+            },
+            "queryTimeout": "02:00:00",
+            "partitionOption": "None"
+          },
+          "datasetSettings": {
+            "annotations": [],
+            "type": "SqlServerTable",
+            "schema": [],
+            "typeProperties": {
+              "database": "GLOBAL_EDW_DSP"
+            },
+            "externalReferences": {
+              "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+            }
+          }
+        }
+      },
+      {
+        "name": "SAU_T_D_SAL_SALORDH_CUR_D_DELTA",
+        "type": "Copy",
+        "dependsOn": [
+          {
+            "activity": "LookupNew",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "LookupOld",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT \n    CT.SYS_CHANGE_VERSION,\n    CT.SYS_CHANGE_CREATION_VERSION,\n    CT.SYS_CHANGE_OPERATION,\n    CT.SYS_CHANGE_COLUMNS,\n    CT.SYS_CHANGE_CONTEXT,\n\n    CT.[SALES_ORDER_KEY] AS CT_SALES_ORDER_KEY,\n\n    F.*\nFROM CHANGETABLE(\n        CHANGES [GLOBAL_EDW].[SAU_T_D_SAL_SALORDH_CUR_D],\n        @{activity('LookupOld').output.firstRow.SYS_CHANGE_VERSION}\n     ) CT\n\nINNER JOIN \n(\n    SELECT \n        MAX(E.SYS_CHANGE_VERSION) AS SYS_CHANGE_VERSION,\n        E.[SALES_ORDER_KEY]\n    FROM CHANGETABLE(\n            CHANGES [GLOBAL_EDW].[SAU_T_D_SAL_SALORDH_CUR_D],\n            @{activity('LookupOld').output.firstRow.SYS_CHANGE_VERSION}\n         ) E\n    GROUP BY \n        E.[SALES_ORDER_KEY]\n) b\n    ON CT.[SALES_ORDER_KEY] = b.[SALES_ORDER_KEY]\n    AND CT.SYS_CHANGE_VERSION = b.SYS_CHANGE_VERSION\n\nLEFT JOIN [GLOBAL_EDW].[SAU_T_D_SAL_SALORDH_CUR_D] F\n    ON CT.[SALES_ORDER_KEY] = F.[SALES_ORDER_KEY]\n\nWHERE \n    ISNULL(CT.SYS_CHANGE_VERSION, '') > ''\n    AND CT.SYS_CHANGE_OPERATION <> 'D'\n    AND ISNULL(CT.SYS_CHANGE_VERSION, 0) <= \n        @{activity('LookupNew').output.firstRow.SYS_CHANGE_VERSION}",
+              "type": "Expression"
+            },
+            "queryTimeout": "12:00:00",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "annotations": [],
+              "type": "SqlServerTable",
+              "schema": [],
+              "typeProperties": {
+                "database": "GLOBAL_EDW_DSP"
+              },
+              "externalReferences": {
+                "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+              }
+            }
+          },
+          "sink": {
+            "type": "DataWarehouseSink",
+            "preCopyScript": "TRUNCATE TABLE[GLOBAL_EDW].[BRONZE].[SAU_T_D_SAL_SALORDH_CUR_D_DELTA]",
+            "allowCopyCommand": true,
+            "copyCommandSettings": {},
+            "writeBehavior": "Insert",
+            "tableOption": "autoCreate",
+            "disableMetricsCollection": false,
+            "datasetSettings": {
+              "annotations": [],
+              "connectionSettings": {
+                "name": "GLOBAL_EDW",
+                "properties": {
+                  "annotations": [],
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "endpoint": "c2rbjb2faruufollpwcl3w3nue-ozi5pscjxf7e7jsyxglgapwiym.datawarehouse.fabric.microsoft.com",
+                    "artifactId": "175895f8-4d92-40a3-9ccd-68e8e9fa96b7",
+                    "workspaceId": "c8d75176-b949-4f7e-a658-b996603ec8c3"
+                  },
+                  "externalReferences": {
+                    "connection": "58c93752-eeeb-4f41-a48e-9e35711f89cb"
+                  }
+                }
+              },
+              "type": "DataWarehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "BRONZE",
+                "table": "SAU_T_D_SAL_SALORDH_CUR_D_DELTA"
+              }
+            }
+          },
+          "enableStaging": true,
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          }
+        }
+      },
+      {
+        "name": "ChangeTracking_version_Update",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "SAU_T_D_SAL_SALORDH_CUR_D_DELTA",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "UPDATE ChangeTracking_version_Update\nSET [SYS_CHANGE_VERSION] = @{activity('LookupNew').output.firstRow.SYS_CHANGE_VERSION}\nWHERE [TableName] = 'SAU_T_D_SAL_SALORDH_CUR_D'",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00",
+          "database": "GLOBAL_EDW_DSP"
+        },
+        "externalReferences": {
+          "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+        }
+      }
+    ]
+  }
+}

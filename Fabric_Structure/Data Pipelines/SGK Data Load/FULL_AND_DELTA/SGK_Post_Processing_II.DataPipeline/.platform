@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "SGK_Post_Processing_II"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e0a5898c-30db-b7be-443d-a6a696958e17"
+  }
+}

@@ -1,0 +1,670 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "2bb6be37-ae42-8050-4665-d5e251ee4b98",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_I",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_TABLE",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "e7617a23-01b4-9c0d-4e08-4282274214ab",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_II",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_I",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "cfcc29f1-32d2-82ac-4e1b-4a36da99ec8f",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_III",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_II",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "18f26fe4-9f51-8bf6-44f2-97ea12c06914",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_IV",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_III",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "ec58b6ba-cff1-b429-44e0-702c60774631",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_V",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_IV",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "b370c33b-da18-ab6b-47d9-e5bd5b7d0596",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_VI",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_V",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "0737b091-d7e8-b598-426d-9d2ad2bee4cb",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_VII",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_VI",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "4696d115-2f26-b1b7-4fd3-34aa0aae2ad9",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_VIII",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_VII",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "1119fd78-fd47-ad2c-433c-86a86404de4d",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_IX",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_VIII",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "9535f58e-3b38-aa52-44cc-b55ce3dcdba3",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_X",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_IX",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "8d081de7-0258-9880-4768-93b2d5df8131",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_XI",
+        "dependsOn": [
+          {
+            "activity": "Reference_Document_Type",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "9bd46100-c04e-a33f-4ffb-7043f6fa7d76",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_XII",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_XI",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "03c9cb85-4955-86bf-4446-b16cb75dea63",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_XIII",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_XII",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "9279e20a-3709-b14f-4d57-6c1163f168c7",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_XV",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_XIV",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "9e1ac4e6-0ee3-acf2-44ad-96c392c0154b",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_FULL_XIV",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_XIII",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "0f2a438d-4fec-b35f-4029-6027b3a8f3bb",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "EDW_T_F_CO_CCCSTRN_CUR_D",
+        "dependsOn": [
+          {
+            "activity": "EDW_T_F_FI_GENLDG4_CUR_D",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "e45a5f5c-3ca9-9e8b-47e4-177cecd93117",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "EDW_T_F_CO_CCCSUMM_CUR_D",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_X",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "14a29319-d1d0-8bc6-4129-3d184a2ec770",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "EDW_T_F_FI_GENLDG4_CUR_D",
+        "dependsOn": [
+          {
+            "activity": "COMBINE_FULL_XV",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "f568f4bf-d7c7-9c39-4113-cdc7a3727635",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "EDW_T_F_PP_SPNDANL2_CUR_D",
+        "dependsOn": [
+          {
+            "activity": "EDW_T_F_CO_CCCSUMM_CUR_D",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "0d31024f-0dc7-96fd-43ea-716a444cccd9",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "3e0f22a2-ef02-4f77-8b4c-fa8a9173eb35"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "COMBINE_TABLE",
+        "dependsOn": [
+          {
+            "activity": "OPENING_BAL",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "database": "GLOBAL_EDW_DSP",
+          "scripts": [
+            {
+              "text": {
+                "value": "UPDATE tgt\nSET tgt.[Reference_Document_Type] = src.AWTYP\nFROM GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_F_PRD_SERVCST_CUR_D tgt\nJOIN ECC_CORE.ECC_CORE.COBK src\n    ON tgt.DOCMT_NUM = src.BELNR\n   AND tgt.CONTROLLING_AREA = src.KOKRS\n   AND tgt.[FISCAL_YR] = src.GJAHR;",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Reference_Document_Type",
+        "dependsOn": []
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "database": "GLOBAL_EDW_DSP",
+          "scripts": [
+            {
+              "text": {
+                "value": "WITH SRC AS\r\n(\r\nSELECT DISTINCT \r\n     RCLNT\r\n    ,RYEAR\r\n    ,OBJNR00\r\n    ,OBJNR01\r\n    ,OBJNR02\r\n    ,OBJNR03\r\n    ,OBJNR04\r\n    ,OBJNR05\r\n    ,OBJNR06\r\n    ,OBJNR07\r\n    ,OBJNR08\r\n    ,RPMAX\r\n    ,DRCRK\r\n\t,HSLVT\r\n\t,RCNTR\r\n    ,CAST(REPLACE(PERIOD_COL,'TSL','') AS INT) AS PSTNG_PER\r\n    ,TRNSCTN_CRNCY_AMT\r\nFROM\r\n(\r\n    SELECT\r\n         RCLNT\r\n        ,RYEAR\r\n        ,OBJNR00\r\n        ,OBJNR01\r\n        ,OBJNR02\r\n        ,OBJNR03\r\n        ,OBJNR04\r\n        ,OBJNR05\r\n        ,OBJNR06\r\n        ,OBJNR07\r\n        ,OBJNR08\r\n        ,RPMAX\r\n        ,DRCRK\r\n\t\t,HSLVT\r\n\t\t,RCNTR\r\n        ,TSL01,TSL02,TSL03,TSL04\r\n        ,TSL05,TSL06,TSL07,TSL08\r\n        ,TSL09,TSL10,TSL11,TSL12\r\n        ,TSL13,TSL14,TSL15,TSL16\r\n    FROM ECC_CORE.ECC_CORE.FAGLFLEXT\r\n) S\r\nUNPIVOT\r\n(\r\n    TRNSCTN_CRNCY_AMT FOR PERIOD_COL IN\r\n    (\r\n        TSL01,TSL02,TSL03,TSL04,\r\n        TSL05,TSL06,TSL07,TSL08,\r\n        TSL09,TSL10,TSL11,TSL12,\r\n        TSL13,TSL14,TSL15,TSL16\r\n    )\r\n) U\r\n)\r\n \r\nUPDATE T\r\nSET T.OPENING_BAL = SRC.HSLVT,\r\n  T.COST_CNTR_ID = SRC.RCNTR\r\nFROM GLOBAL_EDW_DSP.GLOBAL_EDW.EDW_T_F_FI_GENLDGT2_CUR_D T\r\nINNER JOIN SRC\r\n     ON     T.FISCAL_YR             = SRC.RYEAR\r\n        AND T.TBL_GROUP_OBJ_NUM_00  = SRC.OBJNR00\r\n        AND T.TBL_GROUP_OBJ_NUM_01  = SRC.OBJNR01\r\n        AND T.TBL_GROUP_OBJ_NUM_02  = SRC.OBJNR02\r\n        AND T.TBL_GROUP_OBJ_NUM_03  = SRC.OBJNR03\r\n        AND T.TBL_GROUP_OBJ_NUM_04  = SRC.OBJNR04\r\n        AND T.TBL_GROUP_OBJ_NUM_05  = SRC.OBJNR05\r\n        AND T.TBL_GROUP_OBJ_NUM_06  = SRC.OBJNR06\r\n        AND T.TBL_GROUP_OBJ_NUM_07  = SRC.OBJNR07\r\n        AND T.TBL_GROUP_OBJ_NUM_08  = SRC.OBJNR08\r\n        AND T.MAX_PER               = SRC.RPMAX\r\n        AND T.DEBIT_CREDIT_IND      = SRC.DRCRK\r\n        AND T.PSTNG_PER\t\t\t\t= SRC.PSTNG_PER\r\n        AND T.TRNSCTN_CRNCY_AMT     = SRC.TRNSCTN_CRNCY_AMT",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "OPENING_BAL",
+        "dependsOn": []
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "database": "GLOBAL_EDW_DSP",
+          "scripts": [
+            {
+              "text": {
+                "value": "UPDATE F SET\n\n    F.SERV_ORD_DESC_UNICODED = S.KTEXT \n\nFROM [GLOBAL_EDW].[EDW_T_D_PRD_SERVORD_CUR_D]AS F\n\nLEFT JOIN [ECC_CORE].[ECC_CORE].[AUFK] AS S\n\n    ON F.[SERVC_ORDER] = S.AUFNR \n\nWHERE  F.[DESC] LIKE '%\u001a\u001a%'",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "1686fadf-6a00-4f2d-a907-62292b950d1b"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "SERV_ORD_DESC_UNICODED",
+        "dependsOn": []
+      }
+    ]
+  }
+}

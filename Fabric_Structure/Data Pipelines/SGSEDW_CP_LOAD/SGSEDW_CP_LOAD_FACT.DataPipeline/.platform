@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "SGSEDW_CP_LOAD_FACT"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3b3ba4a3-0253-bbc8-442d-bdc0d71df1ff"
+  }
+}

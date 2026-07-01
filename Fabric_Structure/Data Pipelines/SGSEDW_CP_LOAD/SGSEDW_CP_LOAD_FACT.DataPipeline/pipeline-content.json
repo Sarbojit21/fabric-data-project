@@ -1,0 +1,1040 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "FactOperatorsAndOthersCategoriesAllocationByHours_2V2",
+        "type": "Script",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\n\nUSE SCHEMA DBO;\n\nCALL SGSEDW.DBO.\"Proc_CP_FactOperatorsAndOthersCategoriesAllocationByHours_2V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "FactProjectManagerCPAllocationByHoursAndPoints_3V2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "FactOperatorsAndOthersCategoriesAllocationByHours_2V2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactProjectManagerCPAllocationByHoursAndPoints_3V2\"('@{pipeline().parameters.ProcMonth}','FULL') ;",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "FactUSAndCanadaEmployeesAllocationByRegionalRevenue_4V2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "FactProjectManagerCPAllocationByHoursAndPoints_3V2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactUSAndCanadaEmployeesAllocationByRegionalRevenue_4V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "FactStevensonLBCEmployeesAllocationByPOP and POSRevenue",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "FactUSAndCanadaEmployeesAllocationByRegionalRevenue_4V2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactStevensonLBCEmployeesAllocationByPOP&POSRevenue_5V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "DragonflyClientFacingEmployeeAllocationByDragonfly",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "FactStevensonLBCEmployeesAllocationByPOP and POSRevenue",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactDragonflyClientFacingEmployeeAllocationByDragonflyRevenue_6V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "NoHoursAndNoPMPointsBucketsEmployeesAllocationByRevenue",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "DragonflyClientFacingEmployeeAllocationByDragonfly",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactNoHoursAndNoPMPointsBucketsEmployeesAllocationByRevenue_7V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "GPNSitesNoHoursAndNoPMPointsEmployeesAllocationByLabor",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "NoHoursAndNoPMPointsBucketsEmployeesAllocationByRevenue",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactGPNSitesNoHoursAndNoPMPointsEmployeesAllocationByLaborCost_8V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "PlatingDeptEmployeesAllocationByPlateSqInch",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "GPNSitesNoHoursAndNoPMPointsEmployeesAllocationByLabor",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactPlatingDeptEmployeesAllocationByPlateSqInch_9V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "FactEngravingDeptEmployeesAllocationByGravureCounts",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "PlatingDeptEmployeesAllocationByPlateSqInch",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactEngravingDeptEmployeesAllocationByGravureCounts_10V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "SpecialLogicForClarksvilleFacilityLBC_11V2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "FactEngravingDeptEmployeesAllocationByGravureCounts",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactSpecialLogicForClarksvilleFacilityLBC_11V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "SaleDeptEmployeesAllocationBySalesAttainments",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "SpecialLogicForClarksvilleFacilityLBC_11V2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactSaleDeptEmployeesAllocationBySalesAttainments_12V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "UpdateAllocationPercentage_13V2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "SaleDeptEmployeesAllocationBySalesAttainments",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_UpdateAllocationPercentage_13V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "Proc_CP_FactLeadershipAllocationRate_14V2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "UpdateAllocationPercentage_13V2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactLeadershipAllocationRate_14V2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "NoHoursNoPmNoSubserviceNoServiceEmployeesAllocationBy",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_CP_FactLeadershipAllocationRate_14V2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_CP_FactNoHoursNoPmNoSubserviceNoServiceEmployeesAllocationByRevenue_15V2\"('@{pipeline().parameters.ProcMonth}','FULL'); ",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "FactCOGSLaborAllocationRateV2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "NoHoursNoPmNoSubserviceNoServiceEmployeesAllocationBy",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_FactCOGSLaborAllocationRateV2\"('@{pipeline().parameters.ProcMonth}','FULL') ;",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "SellingLaborAllocationRateV2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "FactCOGSLaborAllocationRateV2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_FactSellingLaborAllocationRateV2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "FactGenralAdminLaborAllocationRateV2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "SellingLaborAllocationRateV2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_FactGenralAdminLaborAllocationRateV2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationRateWithGLDepartmentLBCV2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "FactGenralAdminLaborAllocationRateV2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_FactAllocationRateWithGLDepartmentLBCV2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "Proc_FactCostFDRSV2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationRateWithGLDepartmentLBCV2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\n\nUSE SCHEMA DBO;\n\nCALL SGSEDW.DBO.\"Proc_FactCostFDRSV2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "Proc_FactAllocationFDRSCostDefultByGlobalRevenue",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactWIPCostAdjustmentReconciliation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_FactAllocationFDRSCostDefultByGlobalRevenue\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "Proc_FactPeopleCostAndSGACostReconciliationV2",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactAllocationFDRSCostDefultByGlobalRevenue",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "parameters": [
+                {
+                  "name": "ProcMonth",
+                  "type": "String",
+                  "value": {
+                    "value": "@pipeline().parameters.ProcMonth",
+                    "type": "Expression"
+                  },
+                  "direction": "Input"
+                }
+              ],
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\n\nUSE SCHEMA DBO;\n\nCALL SGSEDW.DBO.\"Proc_FactPeopleCostAndSGACostReconciliationV2\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "Proc_FactWIPCostAdjustmentReconciliation",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactCostFDRSV2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_FactWIPCostAdjustmentReconciliation\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      },
+      {
+        "name": "Proc_FactFDRSCostWIP",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Proc_FactPeopleCostAndSGACostReconciliationV2",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "connectionVersion": "1.1",
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "USE DATABASE SGSEDW;\r\nUSE SCHEMA DBO;\r\nCALL SGSEDW.DBO.\"Proc_FactFDRSCostWIP\"('@{pipeline().parameters.ProcMonth}','FULL');",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "2914def6-096c-4f89-8d58-85886d48d334"
+        }
+      }
+    ],
+    "parameters": {
+      "ProcMonth": {
+        "type": "string"
+      }
+    }
+  }
+}
