@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_job_tech_spec_reference_jobs_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "60823de9-0b13-8c75-4293-f9fd3b449530"
+  }
+}

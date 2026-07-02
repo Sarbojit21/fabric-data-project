@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_job_tech_spec_colour_cylinder_engraving_FULL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "720cea75-0510-aa79-494f-f03b44238bb9"
+  }
+}

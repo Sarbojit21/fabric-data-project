@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Labor Allocation No Wage CP_UAT"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "de20df8c-9a33-9e97-4cba-f4ac710c7acc"
+  }
+}

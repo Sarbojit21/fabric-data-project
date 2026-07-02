@@ -1,0 +1,577 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT  CT.SYS_CHANGE_VERSION\n\t   ,CT.SYS_CHANGE_CREATION_VERSION\n\t   ,CT.SYS_CHANGE_OPERATION\n\t   ,CT.SYS_CHANGE_COLUMNS\n\t   ,CT.SYS_CHANGE_CONTEXT\n\t   ,CT.[JobTechSpecId] AS CT_JobTechSpecId\n      ,F.[JobTechSpecId]\n      ,[JobVersionId]\n      ,[JobCategory]\n      ,[SurfaceReversePrint]\n      ,[CylinderSize]\n      ,[ReelWidth]\n      ,[NumberAroundCylinder]\n      ,[NumberAcrossCylinder]\n      ,[Dispro]\n      ,[DisproDirection]\n      ,[DisproNonStandard]\n      ,[PlateType]\n      ,[PlateThickness]\n      ,[PlateStagger]\n      ,[PlateStaggerRolling]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([FileName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [FileName]\n      ,[JobHeight]\n      ,[JobWidth]\n      ,[RotateJob90CDI]\n      ,[RotateJob90IS]\n      ,[PCMTypeProfile]\n      ,[ProductionSystem]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([BarcodeNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [BarcodeNumber]\n      ,[BarcodeType]\n      ,[BarcodeCol]\n      ,[BarcodeLMI]\n      ,[BarcodeMag]\n      ,[BarcodeBWR]\n      ,[CutterReference]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CustomerDesignRef],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [CustomerDesignRef]\n      ,[UnwindCode]\n      ,[EyeMarkSizeX]\n      ,[EyeMarkSizeY]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Substrate],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [Substrate]\n      ,[InterslittingSize]\n      ,[InterslittingQty]\n      ,[ContinuousPrint]\n      ,[ButtJoin]\n      ,[BleedLeft]\n      ,[BleedRight]\n      ,[CentreTrim]\n      ,[SlitPosition]\n      ,[SlitPositionSize]\n      ,[Stepped]\n      ,[TargetPressName]\n      ,[TargetPressType]\n      ,[DisproATW]\n      ,[AniloxType]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SmartmarkLegendNotes],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SmartmarkLegendNotes]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([BarcodeNotes],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS  [BarcodeNotes]\n      ,[DisplaceOnStepping]\n      ,[CDIResolution]\n      ,[TotalHeight]\n      ,[TotalWidth]\n      ,[CutBack]\n      ,[CDIPowerSetting]\n      ,[FlatTopDot]\n      ,[SurfaceScreening]\n      ,[Revolutions]\n      ,[ExposureTime]\n      ,[HDHighlightDot]\n      ,[PlateRelief]\n      ,[StickyBack]\n      ,[SlugCount]\n      ,[OrderType]\n      ,[Carrier]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([BMCECTType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS   [BMCECTType]\n      ,[Weight]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Size],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [Size]\n      ,[IncludeCustomerLogo]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MountMaterial],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [MountMaterial]\n      ,[AdditionalMountMaterial]\n      ,[Centreline]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MountMaterial],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaterialAround]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MaterialAcross],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaterialAcross]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CAD#],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [CAD#]\n      ,[GlueTab]\n      ,[CADView]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CommonKnife],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [CommonKnife]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Gutter],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [Gutter]\n      ,[CorrugateCurves]\n      ,[PlatePunch]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([GraphicsPickUp],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [GraphicsPickUp]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Cust1UpDie],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [Cust1UpDie]\n      ,[SuppliedFile]\n      ,[SuppliedFormat]\n      ,[SuppliedBy]\n      ,[PlateReady]\n      ,[PickUpJob]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CustStepDieNo],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [CustStepDieNo]\n      ,[NoUp]\n      ,[MinSheetHeight]\n      ,[MinSheetWidth]\n      ,[MaxSheetHeight]\n      ,[MaxSheetWidth]\n      ,[Layback]\n      ,[FirstKnife]\n      ,[GripperDistance]\n      ,[FillingStyle]\n      ,[StartPointFillDirection]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([ItemCodeVer],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [ItemCodeVer]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Rewind],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Rewind] \n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SteppingPickUp],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [SteppingPickUp]\n      ,[GrossWeb]\n      ,[MultiDesign]\n      ,[NoColoursAffected]\n      ,[Nested]\n      ,[Spiral]\n      ,[TurnAround]\n      ,[SteppedDia]\n      ,[OverallCylinderDia]\n      ,[OverallCylinderCir]\n      ,[FaceLength]\n      ,[ChromePolish]\n      ,[CustomerRZ]\n      ,[RadiusSpec]\n      ,[TestCutInfo]\n      ,[StartingSide]\n      ,[NarrowBarWidth]\n      ,[BarcodeHeight]\n      ,[BearerBars]\n      ,[AutoGenerateBarcode]\n      ,[PrinterSpecURL]\n      ,[SymbolType]\n      ,[CellSize]\n      ,[Width]\n      ,[AddCharacters]\n      ,[PutTextOnTop]\n      ,[AdditionalTextOffset]\n      ,[InstancesInDesign]\n      ,[MinimumSymbolSizeId]\n      ,[ErrorCorrectionId]\n      ,[PrintabilityGauges]\n      ,[Ratio]\n      ,[TextFormatId]\nFROM CHANGETABLE(CHANGES dbo.[tbl_job_tech_spec],@{activity('LookupOld').output.firstRow.SYS_CHANGE_VERSION}) CT\nLEFT JOIN dbo.[tbl_job_tech_spec]  F \nON F.[JobTechSpecId] = CT.[JobTechSpecId]\nWHERE ISNULL(CT.[SYS_CHANGE_VERSION],'') > ''\nAND ISNULL(CT.SYS_CHANGE_VERSION,0) <= @{activity('LookupNew').output.firstRow.SYS_CHANGE_VERSION}",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "database": "MCGDataFactory"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "9ec72f35-598c-46cf-b8ad-16ab19fb641f"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "DelimitedTextSink",
+            "formatSettings": {
+              "type": "DelimitedTextWriteSettings",
+              "quoteAllText": true,
+              "fileExtension": ".csv"
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Delta/Active",
+                  "fileName": {
+                    "value": "@concat('MYSGSEU','_','tbl_job_tech_spec','.csv')",
+                    "type": "Expression"
+                  }
+                },
+                "columnDelimiter": "^",
+                "rowDelimiter": "\r\n",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "tbl_job_tech_spec_DELTA_CSV",
+        "dependsOn": [
+          {
+            "activity": "LookupOld",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "LookupNew",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT  CT.SYS_CHANGE_VERSION\n\t   ,CT.SYS_CHANGE_CREATION_VERSION\n\t   ,CT.SYS_CHANGE_OPERATION\n\t   ,CT.SYS_CHANGE_COLUMNS\n\t   ,CT.SYS_CHANGE_CONTEXT\n\t   ,CT.[JobTechSpecId] AS CT_JobTechSpecId\n      ,F.[JobTechSpecId]\n      ,[JobVersionId]\n      ,[JobCategory]\n      ,[SurfaceReversePrint]\n      ,[CylinderSize]\n      ,[ReelWidth]\n      ,[NumberAroundCylinder]\n      ,[NumberAcrossCylinder]\n      ,[Dispro]\n      ,[DisproDirection]\n      ,[DisproNonStandard]\n      ,[PlateType]\n      ,[PlateThickness]\n      ,[PlateStagger]\n      ,[PlateStaggerRolling]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([FileName],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [FileName]\n      ,[JobHeight]\n      ,[JobWidth]\n      ,[RotateJob90CDI]\n      ,[RotateJob90IS]\n      ,[PCMTypeProfile]\n      ,[ProductionSystem]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([BarcodeNumber],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [BarcodeNumber]\n      ,[BarcodeType]\n      ,[BarcodeCol]\n      ,[BarcodeLMI]\n      ,[BarcodeMag]\n      ,[BarcodeBWR]\n      ,[CutterReference]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CustomerDesignRef],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [CustomerDesignRef]\n      ,[UnwindCode]\n      ,[EyeMarkSizeX]\n      ,[EyeMarkSizeY]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Substrate],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [Substrate]\n      ,[InterslittingSize]\n      ,[InterslittingQty]\n      ,[ContinuousPrint]\n      ,[ButtJoin]\n      ,[BleedLeft]\n      ,[BleedRight]\n      ,[CentreTrim]\n      ,[SlitPosition]\n      ,[SlitPositionSize]\n      ,[Stepped]\n      ,[TargetPressName]\n      ,[TargetPressType]\n      ,[DisproATW]\n      ,[AniloxType]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SmartmarkLegendNotes],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [SmartmarkLegendNotes]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([BarcodeNotes],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS  [BarcodeNotes]\n      ,[DisplaceOnStepping]\n      ,[CDIResolution]\n      ,[TotalHeight]\n      ,[TotalWidth]\n      ,[CutBack]\n      ,[CDIPowerSetting]\n      ,[FlatTopDot]\n      ,[SurfaceScreening]\n      ,[Revolutions]\n      ,[ExposureTime]\n      ,[HDHighlightDot]\n      ,[PlateRelief]\n      ,[StickyBack]\n      ,[SlugCount]\n      ,[OrderType]\n      ,[Carrier]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([BMCECTType],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS   [BMCECTType]\n      ,[Weight]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Size],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [Size]\n      ,[IncludeCustomerLogo]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MountMaterial],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [MountMaterial]\n      ,[AdditionalMountMaterial]\n      ,[Centreline]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MountMaterial],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaterialAround]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([MaterialAcross],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [MaterialAcross]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CAD#],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [CAD#]\n      ,[GlueTab]\n      ,[CADView]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CommonKnife],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [CommonKnife]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Gutter],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [Gutter]\n      ,[CorrugateCurves]\n      ,[PlatePunch]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([GraphicsPickUp],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [GraphicsPickUp]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Cust1UpDie],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [Cust1UpDie]\n      ,[SuppliedFile]\n      ,[SuppliedFormat]\n      ,[SuppliedBy]\n      ,[PlateReady]\n      ,[PickUpJob]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([CustStepDieNo],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [CustStepDieNo]\n      ,[NoUp]\n      ,[MinSheetHeight]\n      ,[MinSheetWidth]\n      ,[MaxSheetHeight]\n      ,[MaxSheetWidth]\n      ,[Layback]\n      ,[FirstKnife]\n      ,[GripperDistance]\n      ,[FillingStyle]\n      ,[StartPointFillDirection]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([ItemCodeVer],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [ItemCodeVer]\n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([Rewind],'^',''),'\"',''),'\\',''),CHAR(10),''),CHAR(13),'') AS [Rewind] \n      ,REPLACE(REPLACE(REPLACE(REPLACE(REPLACE([SteppingPickUp],'^',''),'\"','inch'),'\\',''),CHAR(10),''),CHAR(13),'') AS [SteppingPickUp]\n      ,[GrossWeb]\n      ,[MultiDesign]\n      ,[NoColoursAffected]\n      ,[Nested]\n      ,[Spiral]\n      ,[TurnAround]\n      ,[SteppedDia]\n      ,[OverallCylinderDia]\n      ,[OverallCylinderCir]\n      ,[FaceLength]\n      ,[ChromePolish]\n      ,[CustomerRZ]\n      ,[RadiusSpec]\n      ,[TestCutInfo]\n      ,[StartingSide]\n      ,[NarrowBarWidth]\n      ,[BarcodeHeight]\n      ,[BearerBars]\n      ,[AutoGenerateBarcode]\n      ,[PrinterSpecURL]\n      ,[SymbolType]\n      ,[CellSize]\n      ,[Width]\n      ,[AddCharacters]\n      ,[PutTextOnTop]\n      ,[AdditionalTextOffset]\n      ,[InstancesInDesign]\n      ,[MinimumSymbolSizeId]\n      ,[ErrorCorrectionId]\n      ,[PrintabilityGauges]\n      ,[Ratio]\n      ,[TextFormatId]\nFROM CHANGETABLE(CHANGES dbo.[tbl_job_tech_spec],@{activity('LookupOld').output.firstRow.SYS_CHANGE_VERSION}) CT\nLEFT JOIN dbo.[tbl_job_tech_spec]  F \nON F.[JobTechSpecId] = CT.[JobTechSpecId]\nWHERE ISNULL(CT.[SYS_CHANGE_VERSION],'') > ''\nAND ISNULL(CT.SYS_CHANGE_VERSION,0) <= @{activity('LookupNew').output.firstRow.SYS_CHANGE_VERSION}",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00",
+            "datasetSettings": {
+              "type": "SqlServerTable",
+              "typeProperties": {
+                "database": "MCGDataFactory"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "9ec72f35-598c-46cf-b8ad-16ab19fb641f"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "ParquetSink",
+            "formatSettings": {
+              "type": "ParquetWriteSettings",
+              "enableVertiParquet": true
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Parquet",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Delta/Active",
+                  "fileName": {
+                    "value": "@concat('MYSGSEU','_','tbl_job_tech_spec','.parquet')",
+                    "type": "Expression"
+                  }
+                },
+                "compressionCodec": "snappy"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "tbl_job_tech_spec_DELTA_PARQUET",
+        "dependsOn": [
+          {
+            "activity": "tbl_job_tech_spec_DELTA_CSV",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT SYS_CHANGE_VERSION FROM ChangeTracking_Fabric_Update WHERE TableName = 'tbl_job_tech_spec'",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "SqlServerTable",
+            "typeProperties": {
+              "database": "SGSWEB"
+            },
+            "schema": [],
+            "externalReferences": {
+              "connection": "b61c5550-087f-4c68-a3be-ee036e728bd1"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "LookupOld",
+        "dependsOn": []
+      },
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "SqlServerSource",
+            "sqlReaderQuery": {
+              "value": "SELECT DISTINCT \n\t\tISNULL(MAX(CT.SYS_CHANGE_VERSION),0) AS SYS_CHANGE_VERSION\t   \nFROM CHANGETABLE(CHANGES dbo.[tbl_job_tech_spec],0) CT\nLEFT JOIN dbo.[tbl_job_tech_spec] F\n ON CT.[JobTechSpecId] = F.[JobTechSpecId]\nWHERE ISNULL(CT.[SYS_CHANGE_VERSION],'') > ''",
+              "type": "Expression"
+            },
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "SqlServerTable",
+            "typeProperties": {
+              "database": "MCGDataFactory"
+            },
+            "schema": [],
+            "externalReferences": {
+              "connection": "9ec72f35-598c-46cf-b8ad-16ab19fb641f"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "LookupNew",
+        "dependsOn": []
+      },
+      {
+        "type": "Script",
+        "typeProperties": {
+          "database": "SGSWEB",
+          "scripts": [
+            {
+              "text": {
+                "value": "UPDATE ChangeTracking_Fabric_Update\r\nSET [SYS_CHANGE_VERSION] = @{activity('LookupNew').output.firstRow.SYS_CHANGE_VERSION}\r\nWHERE [TableName] = 'tbl_job_tech_spec'",
+                "type": "Expression"
+              },
+              "type": "Query"
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        },
+        "externalReferences": {
+          "connection": "b61c5550-087f-4c68-a3be-ee036e728bd1"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "ChangeTracking_version_Update",
+        "dependsOn": [
+          {
+            "activity": "tbl_job_tech_spec_DELTA_PARQUET",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "storeSettings": {
+              "type": "LakehouseReadSettings",
+              "recursive": true,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "MYSGSEU/Delta/Active",
+                  "fileName": "MYSGSEU_tbl_job_tech_spec.csv"
+                },
+                "columnDelimiter": "^",
+                "rowDelimiter": "\r\n",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_job_tech_spec_DELTA"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "BRONZE",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "3ee820a0-65ee-9781-4ac4-e11f5db3d583",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "File_To_Table",
+        "dependsOn": [
+          {
+            "activity": "ChangeTracking_version_Update",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "94a03e7c-e366-bc3c-4ae2-1b3332219d66",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "in_mode": {
+              "value": "DELTA",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "tbl_job_tech_spec_Notebook",
+        "dependsOn": [
+          {
+            "activity": "File_To_Table",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_job_tech_spec"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SILVER",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "aabf914c-0501-4c58-ba5b-4b0f05f4420f",
+                    "workspaceId": "c8d75176-b949-4f7e-a658-b996603ec8c3",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "SnowflakeSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE \"SILVER\".\"MYSGSEU\".\"tbl_job_tech_spec\";\n",
+              "type": "Expression"
+            },
+            "importSettings": {
+              "type": "SnowflakeImportCopyCommand"
+            },
+            "datasetSettings": {
+              "type": "SnowflakeTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_job_tech_spec",
+                "database": "SILVER"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "dfdf593d-e2f5-4d2f-aa71-5da8cf3d25ac"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Fabric_To_SF_tbl_job_tech_spec",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "tbl_job_tech_spec_Notebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_job_tech_spec"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SILVER",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "05f4420f-4b0f-ba5b-4c58-0501aabf914c",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "SnowflakeSink",
+            "preCopyScript": {
+              "value": "TRUNCATE TABLE \"SILVER\".\"MYSGSEU\".\"tbl_job_tech_spec\";\n",
+              "type": "Expression"
+            },
+            "importSettings": {
+              "type": "SnowflakeImportCopyCommand"
+            },
+            "datasetSettings": {
+              "type": "SnowflakeTable",
+              "typeProperties": {
+                "schema": "MYSGSEU",
+                "table": "tbl_job_tech_spec",
+                "database": "SILVER"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "5d21465f-20b5-454e-a1d5-e8e11b3c796a"
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": true
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Fabric_To_Dev_SF_tbl_job_tech_spec",
+        "dependsOn": [
+          {
+            "activity": "tbl_job_tech_spec_Notebook",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

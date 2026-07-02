@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "MYSGSEU_tbl_job_tech_spec_colour_cylinders_DELTA"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c125f499-5a39-ae8a-4cf3-d8b3faa5b478"
+  }
+}

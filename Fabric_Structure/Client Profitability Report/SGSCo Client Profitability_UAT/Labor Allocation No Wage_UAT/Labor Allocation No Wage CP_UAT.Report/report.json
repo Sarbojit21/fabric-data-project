@@ -1,0 +1,763 @@
+{
+  "config": "{\"version\":\"5.66\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"type\":2,\"version\":{\"visual\":\"1.8.95\",\"report\":\"2.0.95\",\"page\":\"1.3.95\"}}},\"activeSectionIndex\":3,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "items": [
+          {
+            "name": "images08993519917478476.jpg",
+            "path": "images08993519917478476.jpg",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"192L\"}}}}}]},\"filterSortOrder\":3}",
+      "displayName": "without Wage",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"85fb6114e005ab401a1b\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimEmployeeHistoryNoWage\"}},\"Property\":\"IND - GDPR Restricted\"}},\"type\":\"Categorical\",\"howCreated\":1,\"ordinal\":0},{\"name\":\"bb0ca50835a32b0c04c4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage_UAT\"}},\"Property\":\"IND - GDPRRestricted\"}},\"type\":\"Categorical\",\"howCreated\":1,\"ordinal\":1}]",
+      "height": 720.00,
+      "name": "1a8cadf4a70077702a59",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0adb9b4137c0246b2b02\",\"layouts\":[{\"id\":0,\"position\":{\"x\":7.420289855072464,\"y\":337.6231884057971,\"z\":13000,\"width\":224.46376811594203,\"height\":76.05797101449275,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Customer1(FromGRD)\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"NativeReferenceName\":\"CUST - Customer1(FromGRD)\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 76.06,
+          "width": 224.46,
+          "x": 7.42,
+          "y": 337.62,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"577dafb031821a326e78\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.091024020227561,\"y\":414.2604298356511,\"z\":9000,\"width\":223.31226295828068,\"height\":76.05562579013908,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\"}]},\"columnProperties\":{\"DimCustomerPrimaryContact.CUST - Simplified Group Name\":{\"displayName\":\"Simplified Group Name\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'target'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter5291fc6aa932ae1e33d4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimCustomerPrimaryContact\"}},\"Property\":\"CUST - Portfolio Group Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Portfolio Group Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'TARGET (PACKAGING)'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 76.06,
+          "width": 223.31,
+          "x": 8.09,
+          "y": 414.26,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"5f337100a0697d616950\",\"layouts\":[{\"id\":0,\"position\":{\"x\":980.5718289573562,\"y\":0,\"z\":11000,\"width\":299.752038770704,\"height\":60.58817804939762,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"images08993519917478476.jpg\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 60.59,
+          "width": 299.75,
+          "x": 980.57,
+          "y": 0.00,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"61d7492d587188eeeca0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.6666666666666667,\"y\":13.333333333333334,\"z\":8000,\"width\":216.66666666666669,\"height\":35,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Filter Criteria\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"14pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 35.00,
+          "width": 216.67,
+          "x": 1.67,
+          "y": 13.33,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"648f2395734d8601b0cd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":646.6666666666667,\"z\":2000,\"width\":221.66666666666669,\"height\":71.66666666666667,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Data Source\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Data Source\"},\"Name\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Data Source\",\"NativeReferenceName\":\"IND - Data Source\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 71.67,
+          "width": 221.67,
+          "x": 10.00,
+          "y": 646.67,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"6645fba0e0d6775d0e6c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.333333333333334,\"y\":48.333333333333336,\"z\":0,\"width\":223.33333333333334,\"height\":78.33333333333334,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCalendarDate.DATE - CalendarDate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"},\"Name\":\"DimCalendarDate.DATE - CalendarDate\",\"NativeReferenceName\":\"DATE - CalendarDate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"startDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2025-01-01T00:00:00'\"}}},\"endDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2025-01-31T00:00:00'\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2025-01-01T00:00:00'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":3,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2025-02-01T00:00:00'\"}}}}}}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 78.33,
+          "width": 223.33,
+          "x": 8.33,
+          "y": 48.33,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"6923c310e27bc01db153\",\"layouts\":[{\"id\":0,\"position\":{\"x\":231.42857142857144,\"y\":61.42857142857143,\"z\":10000,\"width\":1048.5714285714287,\"height\":658.5714285714287,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\"},{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Portfolio Group Name\"},{\"queryRef\":\"DimLBCLocation.LOC - Facility LBC And Name\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Job Sub Family Name\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.JOB - Job Title\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Employee Number\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Employee Name\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Allocation Methodolgy\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Data Source\"},{\"queryRef\":\"DimCalendarDate.CAL - YYYYMM\"},{\"queryRef\":\"Sum(FactEmployeeWageHoursForAllocationNoWage.QNTY - Allocation Percentage)\"},{\"queryRef\":\"Sum(FactEmployeeWageHoursForAllocationNoWage.QNTY - Hours)\"},{\"queryRef\":\"Sum(FactEmployeeWageHoursForAllocationNoWage.PM - PM Points)\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Department Indicator\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Job Role Group\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Company Code\"},{\"queryRef\":\"DimLBCLocation.LOC - Pillar Name\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimLBCLocation\",\"Type\":0},{\"Name\":\"d2\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0},{\"Name\":\"d3\",\"Entity\":\"DimCalendarDate\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Company Code\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Company Code\",\"NativeReferenceName\":\"EMP - Company Code\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"LOC - Pillar Name\"},\"Name\":\"DimLBCLocation.LOC - Pillar Name\",\"NativeReferenceName\":\"LOC - Pillar Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"LOC - Facility LBC And Name\"},\"Name\":\"DimLBCLocation.LOC - Facility LBC And Name\",\"NativeReferenceName\":\"LOC - Facility LBC And Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Job Sub Family Name\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Job Sub Family Name\",\"NativeReferenceName\":\"EMP - Job Sub Family Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"JOB - Job Title\"},\"Name\":\"DimEmployeeHistoryNoWage.JOB - Job Title\",\"NativeReferenceName\":\"JOB - Job Title\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Employee Name\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Employee Name\",\"NativeReferenceName\":\"EMP - Employee Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"CAL - YYYYMM\"},\"Name\":\"DimCalendarDate.CAL - YYYYMM\",\"NativeReferenceName\":\"CAL - YYYYMM\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Job Role Group\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Job Role Group\",\"NativeReferenceName\":\"EMP - Job Role Group\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Portfolio Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Portfolio Group Name\",\"NativeReferenceName\":\"CUST - Portfolio Group Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Simplified Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\",\"NativeReferenceName\":\"CUST - Simplified Group Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Allocation Methodolgy\"},\"Name\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Allocation Methodolgy\",\"NativeReferenceName\":\"IND - Allocation Methodolgy\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Data Source\"},\"Name\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Data Source\",\"NativeReferenceName\":\"IND - Data Source\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"QNTY - Allocation Percentage\"}},\"Function\":0},\"Name\":\"Sum(FactEmployeeWageHoursForAllocationNoWage.QNTY - Allocation Percentage)\",\"NativeReferenceName\":\"Sum of QNTY - Allocation Percentage\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"QNTY - Hours\"}},\"Function\":0},\"Name\":\"Sum(FactEmployeeWageHoursForAllocationNoWage.QNTY - Hours)\",\"NativeReferenceName\":\"Sum of QNTY - Hours\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"PM - PM Points\"}},\"Function\":0},\"Name\":\"Sum(FactEmployeeWageHoursForAllocationNoWage.PM - PM Points)\",\"NativeReferenceName\":\"Sum of PM - PM Points\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Department Indicator\"},\"Name\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Department Indicator\",\"NativeReferenceName\":\"IND - Department Indicator\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[{\"name\":\"3442fb1255b0b3dcc006\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage\"}},\"Property\":\"IND - Allocation Methodolgy\"}},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 658.57,
+          "width": 1048.57,
+          "x": 231.43,
+          "y": 61.43,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"6b3addb0653c00e1690d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":218.1818181818182,\"y\":0,\"z\":7000,\"width\":26.446280991735538,\"height\":720.6611570247934,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"basicShape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'line'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 720.66,
+          "width": 26.45,
+          "x": 218.18,
+          "y": 0.00,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"9d5b9dc500557590d6b5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.091024020227561,\"y\":200.6573957016435,\"z\":1000,\"width\":223.31226295828068,\"height\":76.05562579013908,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - MD Harmonized Level1\"},\"Name\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\"}]},\"columnProperties\":{\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\":{\"displayName\":\"MD Harmonized Level1\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 76.06,
+          "width": 223.31,
+          "x": 8.09,
+          "y": 200.66,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"a06c7f799b0ac49b4534\",\"layouts\":[{\"id\":0,\"position\":{\"x\":7.420289855072464,\"y\":276.40579710144925,\"z\":12000,\"width\":224.46376811594203,\"height\":61.21739130434783,\"tabOrder\":12000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimLBCLocation.LOC- Facility LBC\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC- Facility LBC\"},\"Name\":\"DimLBCLocation.LOC- Facility LBC\",\"NativeReferenceName\":\"LOC- Facility LBC1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 61.22,
+          "width": 224.46,
+          "x": 7.42,
+          "y": 276.41,
+          "z": 12000.00
+        },
+        {
+          "config": "{\"name\":\"a6633e9d60ad402b1b0e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.091024020227561,\"y\":490.31605562579017,\"z\":3000,\"width\":223.31226295828068,\"height\":76.05562579013908,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Allocation Methodolgy\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f1\",\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"IND - Allocation Methodolgy\"},\"Name\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Allocation Methodolgy\",\"NativeReferenceName\":\"IND - Allocation Methodolgy\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 76.06,
+          "width": 223.31,
+          "x": 8.09,
+          "y": 490.32,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"ad944d22d9a8a74689db\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.333333333333334,\"y\":126.66666666666667,\"z\":5000,\"width\":223.33333333333334,\"height\":73.33333333333334,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Employee Number\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Employee Number\"}]},\"columnProperties\":{\"DimEmployeeHistoryNoWage.EMP - Employee Number\":{\"displayName\":\"Employee Number\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Number\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'500611'\"}}]]}}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 73.33,
+          "width": 223.33,
+          "x": 8.33,
+          "y": 126.67,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"beb69449b3d1ad0449bd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":242.35271219759048,\"y\":0,\"z\":6000,\"width\":727.0581365927715,\"height\":60.58817804939762,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Labor Details Pull (without wage)\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"24pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 60.59,
+          "width": 727.06,
+          "x": 242.35,
+          "y": 0.00,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"c2161ec04b86e354993e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.091024020227561,\"y\":566.3716814159293,\"z\":4000,\"width\":223.31226295828068,\"height\":80.9102402022756,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Employee Full Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Full Name\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Employee Full Name\",\"NativeReferenceName\":\"EMP - Employee Full Name\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'kevin'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 80.91,
+          "width": 223.31,
+          "x": 8.09,
+          "y": 566.37,
+          "z": 4000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "9813d6226a22c6738edb",
+      "ordinal": 5,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"27e5bde2999a0e383eb6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":603,\"y\":0,\"width\":593,\"height\":574,\"z\":2000,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCalendarDate.DATE - CalendarDate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"},\"Name\":\"DimCalendarDate.DATE - CalendarDate\",\"NativeReferenceName\":\"DATE - CalendarDate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"startDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2025-01-01T00:00:00'\"}}},\"endDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2025-12-31T00:00:00'\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2025-01-01T00:00:00'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":3,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2026-01-01T00:00:00'\"}}}}}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 574.00,
+          "width": 593.00,
+          "x": 603.00,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"7260d1c1a68c916d78c1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":1000,\"width\":692.6146779667906,\"height\":719.2537040424364,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Number\"},{\"queryRef\":\"Sum(FactEmployeeWageHoursForAllocation_UAT.AMT - Allocated Wage (USD))\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocation_UAT\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"AMT - Allocated Wage (USD)\"}},\"Function\":0},\"Name\":\"Sum(FactEmployeeWageHoursForAllocation_UAT.AMT - Allocated Wage (USD))\",\"NativeReferenceName\":\"Sum of AMT - Allocated Wage (USD)\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 719.25,
+          "width": 692.61,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"e9b12e39d758724a2e0b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":0,\"width\":280,\"height\":280,\"z\":0,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 280.00,
+          "width": 280.00,
+          "x": 10.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"247L\"}}}}}]},\"visibility\":1}",
+      "displayName": "Employee (Allocation Percentage)",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "bb93709fb1eeb0af6634",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"099cb5b17781690e7ee1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":344.5183725512925,\"z\":13000,\"width\":232.34960009273212,\"height\":70.7731540512345,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Customer1(FromGRD)\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"NativeReferenceName\":\"CUST - Customer1(FromGRD)\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 70.77,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 344.52,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"2807682812a5cf5f000a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":112.16877245856034,\"z\":4000,\"width\":232.34960009273212,\"height\":74.77918163904022,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Number\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 74.78,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 112.17,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"5900780b8de6de04eea2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.3353425292685754,\"y\":415.291526602527,\"z\":8000,\"width\":229.67891503419497,\"height\":76.1145241683088,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\"}]},\"columnProperties\":{\"DimCustomerPrimaryContact.CUST - Simplified Group Name\":{\"displayName\":\"Simplified Group Name\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter5291fc6aa932ae1e33d4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimCustomerPrimaryContact\"}},\"Property\":\"CUST - Portfolio Group Name\"}},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 76.11,
+          "width": 229.68,
+          "x": 1.34,
+          "y": 415.29,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"60beb4fee2a0228837b6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":263.06247826590936,\"z\":12000,\"width\":232.34960009273212,\"height\":81.4558942853831,\"tabOrder\":12000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimLBCLocation.LOC- Facility LBC\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC- Facility LBC\"},\"Name\":\"DimLBCLocation.LOC- Facility LBC\",\"NativeReferenceName\":\"LOC- Facility LBC\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 81.46,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 263.06,
+          "z": 12000.00
+        },
+        {
+          "config": "{\"name\":\"643ef4477ed84225237b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":242.874251497006,\"y\":0,\"z\":5000,\"width\":839.2814371257485,\"height\":60.35928143712575,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Labor Details Pull - WITH WAGE\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"24pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 60.36,
+          "width": 839.28,
+          "x": 242.87,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"a730b33cd3ad65a6a1d8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.3353425292685754,\"y\":566.185232409876,\"z\":3000,\"width\":229.67891503419497,\"height\":74.77918163904022,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Employee Name\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Name\",\"NativeReferenceName\":\"EMP - Employee Name\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 74.78,
+          "width": 229.68,
+          "x": 1.34,
+          "y": 566.19,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"aca54107d67eac4909be\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":186.94795409760056,\"z\":0,\"width\":232.34960009273212,\"height\":76.1145241683088,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - MD Harmonized Level1\"},\"Name\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\"}]},\"columnProperties\":{\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\":{\"displayName\":\"MD Harmonized Level1\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 76.11,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 186.95,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"b3bfdcb7b72eeacab44a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.2586037364798426,\"y\":12.586037364798427,\"z\":7000,\"width\":197.60078662733528,\"height\":36.49950835791544,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Filter Criteria\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"14pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 36.50,
+          "width": 197.60,
+          "x": 1.26,
+          "y": 12.59,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"bd9c854c8657443980b2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.3353425292685754,\"y\":491.40605077083575,\"z\":2000,\"width\":229.67891503419497,\"height\":74.77918163904022,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocation_UAT.IND - Allocation Methodolgy\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocation_UAT\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Allocation Methodolgy\"},\"Name\":\"FactEmployeeWageHoursForAllocation_UAT.IND - Allocation Methodolgy\",\"NativeReferenceName\":\"IND - Allocation Methodolgy1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 74.78,
+          "width": 229.68,
+          "x": 1.34,
+          "y": 491.41,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"d4ea0e88e54b2a328798\",\"layouts\":[{\"id\":0,\"position\":{\"x\":980.2479612292959,\"y\":0,\"z\":11000,\"width\":299.752038770704,\"height\":60.58817804939762,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"images08993519917478476.jpg\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 60.59,
+          "width": 299.75,
+          "x": 980.25,
+          "y": 0.00,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"e14265f91f789c5a1285\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":640.9644140489162,\"z\":1000,\"width\":229.67891503419497,\"height\":78.78520922684595,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocation_UAT.IND - Data Source\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocation_UAT\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Data Source\"},\"Name\":\"FactEmployeeWageHoursForAllocation_UAT.IND - Data Source\",\"NativeReferenceName\":\"IND - Data Source1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 78.79,
+          "width": 229.68,
+          "x": 0.00,
+          "y": 640.96,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"e28dd2e0a1a53ef71beb\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":48.07233105366871,\"z\":9000,\"width\":231.01425756346356,\"height\":64.09644140489162,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCalendarDate.DATE - CalendarDate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"},\"Name\":\"DimCalendarDate.DATE - CalendarDate\",\"NativeReferenceName\":\"DATE - CalendarDate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"startDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2025-01-01T00:00:00'\"}}},\"endDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2025-11-30T00:00:00'\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2025-01-01T00:00:00'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":3,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2025-12-01T00:00:00'\"}}}}}}}]}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Date Range'\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 64.10,
+          "width": 231.01,
+          "x": 0.00,
+          "y": 48.07,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"f2585de7badf59bbdfd0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":218.1818181818182,\"y\":0,\"z\":6000,\"width\":26.446280991735538,\"height\":720.6611570247934,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"basicShape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'line'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 720.66,
+          "width": 26.45,
+          "x": 218.18,
+          "y": 0.00,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"fff8f956abfb6b7d4a16\",\"layouts\":[{\"id\":0,\"position\":{\"x\":231.4050845843781,\"y\":59.80131399371569,\"z\":10000,\"width\":1049.1230520201862,\"height\":660.4145110610341,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Name\",\"active\":true},{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Number\"},{\"queryRef\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\"},{\"queryRef\":\"DimEmployeeHistory.UltiproDepartmentMapping\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocation_UAT.IND - Allocation Methodolgy\"}],\"Columns\":[{\"queryRef\":\"DimCalendarDate.CAL - YYYYMM\",\"active\":true}],\"Values\":[{\"queryRef\":\"Sum(FactEmployeeWageHoursForAllocation_UAT.QNTY - Allocation Percentage)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d4\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0},{\"Name\":\"d3\",\"Entity\":\"DimCalendarDate\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0},{\"Name\":\"f1\",\"Entity\":\"FactEmployeeWageHoursForAllocation_UAT\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d4\"}},\"Property\":\"EMP - Employee Name\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Name\",\"NativeReferenceName\":\"EMP - Employee Name1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d4\"}},\"Property\":\"UltiproDepartmentMapping\"},\"Name\":\"DimEmployeeHistory.UltiproDepartmentMapping\",\"NativeReferenceName\":\"UltiproDepartmentMapping\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"CAL - YYYYMM\"},\"Name\":\"DimCalendarDate.CAL - YYYYMM\",\"NativeReferenceName\":\"CAL - YYYYMM\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d4\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - MD Harmonized Level1\"},\"Name\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\",\"NativeReferenceName\":\"CUST - MD Harmonized Level1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"IND - Allocation Methodolgy\"},\"Name\":\"FactEmployeeWageHoursForAllocation_UAT.IND - Allocation Methodolgy\",\"NativeReferenceName\":\"IND - Allocation Methodolgy1\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"QNTY - Allocation Percentage\"}},\"Function\":0},\"Name\":\"Sum(FactEmployeeWageHoursForAllocation_UAT.QNTY - Allocation Percentage)\",\"NativeReferenceName\":\"Sum of QNTY - Allocation Percentage1\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"DimEmployeeHistory.EMP - Employee Name\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimEmployeeHistory\"}},\"Property\":\"EMP - Employee Name\"}}],\"isPinned\":true},{\"queryRefs\":[\"DimEmployeeHistory.EMP - Employee Number\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimEmployeeHistory\"}},\"Property\":\"EMP - Employee Number\"}}],\"isPinned\":true},{\"queryRefs\":[\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\"],\"isCollapsed\":true,\"isPinned\":true},{\"queryRefs\":[\"DimEmployeeHistory.UltiproDepartmentMapping\"],\"isCollapsed\":true},{\"queryRefs\":[\"FactEmployeeWageHoursForAllocation_UAT.IND - Allocation Methodolgy\"],\"isCollapsed\":true}],\"root\":{\"identityValues\":null}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"155.20935690815207D\"}}}},\"selector\":{\"metadata\":\"DimEmployeeHistory.EMP - Employee Name\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"82.09186210194945D\"}}}},\"selector\":{\"metadata\":\"DimEmployeeHistory.EMP - Employee Number\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"66.67313409482084D\"}}}},\"selector\":{\"metadata\":\"DimCalendarDate.CAL - YYYYMM\"}}]}}}",
+          "filters": "[]",
+          "height": 660.41,
+          "width": 1049.12,
+          "x": 231.41,
+          "y": 59.80,
+          "z": 10000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "with Wage - No Customer",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "bd39459eed06d872d5d7",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0675c1dbc6c86b28ad02\",\"layouts\":[{\"id\":0,\"position\":{\"x\":242.874251497006,\"y\":0,\"z\":5000,\"width\":839.2814371257485,\"height\":60.35928143712575,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Employee Lookup, No Customer - WITH WAGE\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"24pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 60.36,
+          "width": 839.28,
+          "x": 242.87,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"0776b04409c0e3643001\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.5311004784688995,\"y\":50.526315789473685,\"z\":10000,\"width\":229.66507177033495,\"height\":73.49282296650718,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCalendarDate.DATE - CalendarDate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"},\"Name\":\"DimCalendarDate.DATE - CalendarDate\",\"NativeReferenceName\":\"DATE - CalendarDate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Date Range'\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 73.49,
+          "width": 229.67,
+          "x": 1.53,
+          "y": 50.53,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"2052b7503a7559529ad8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":416.62686913179556,\"z\":8000,\"width\":232.34960009273212,\"height\":76.1145241683088,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\"}]},\"columnProperties\":{\"DimCustomerPrimaryContact.CUST - Simplified Group Name\":{\"displayName\":\"Simplified Group Name\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'target'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter5291fc6aa932ae1e33d4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimCustomerPrimaryContact\"}},\"Property\":\"CUST - Portfolio Group Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Portfolio Group Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'TARGET (PACKAGING)'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 76.11,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 416.63,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"20ec0306020cbccb4407\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":646.3057841659905,\"z\":1000,\"width\":231.01425756346356,\"height\":73.44383910977164,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.IND - Data Source\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocationOut\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Data Source\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.IND - Data Source\",\"NativeReferenceName\":\"IND - Data Source1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 73.44,
+          "width": 231.01,
+          "x": 0.00,
+          "y": 646.31,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"30adc5807e9dd68c4b92\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":184.2772690390634,\"z\":0,\"width\":232.34960009273212,\"height\":81.4558942853831,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - MD Harmonized Level1\"},\"Name\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\",\"NativeReferenceName\":\"CUST - MD Harmonized Level1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 81.46,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 184.28,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"4b302d95009b3040e19b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":265.73316332444654,\"z\":12000,\"width\":232.34960009273212,\"height\":69.43781152196593,\"tabOrder\":12000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimLBCLocation.LOC- Facility LBC\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC- Facility LBC\"},\"Name\":\"DimLBCLocation.LOC- Facility LBC\",\"NativeReferenceName\":\"LOC- Facility LBC\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 69.44,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 265.73,
+          "z": 12000.00
+        },
+        {
+          "config": "{\"name\":\"6ea9bcd3a95853498d8a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":336.506317375681,\"z\":13000,\"width\":232.34960009273212,\"height\":80.12055175611452,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Customer1(FromGRD)\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"NativeReferenceName\":\"CUST - Customer1(FromGRD)\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 80.12,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 336.51,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"7076c5ebd0c08459946e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.5311004784688995,\"y\":122.48803827751198,\"z\":4000,\"width\":231.19617224880383,\"height\":61.24401913875599,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Number\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 61.24,
+          "width": 231.20,
+          "x": 1.53,
+          "y": 122.49,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"8d182a6f42456335388b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":568.8559174684132,\"z\":3000,\"width\":231.01425756346356,\"height\":77.44986669757738,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Employee Name\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Name\",\"NativeReferenceName\":\"EMP - Employee Name1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 77.45,
+          "width": 231.01,
+          "x": 0.00,
+          "y": 568.86,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"a95248f953a09b850e6c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":231.66666666666669,\"y\":60,\"z\":9000,\"width\":1048.3333333333335,\"height\":660,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"DimLBCLocation.LOC - Facility LBC And Name\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Number\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Name\"},{\"queryRef\":\"Sum(FactEmployeeWageHoursForAllocationOut.AMT - Allocated Wage (USD))\"},{\"queryRef\":\"DimEmployeeHistory.JOB- Job Title\"},{\"queryRef\":\"DimCalendarDate.CAL - YYYYMM\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.IND - Department Indicator\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Job Role Group\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Company Code\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d2\",\"Entity\":\"DimCalendarDate\",\"Type\":0},{\"Name\":\"d3\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocationOut\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"CAL - YYYYMM\"},\"Name\":\"DimCalendarDate.CAL - YYYYMM\",\"NativeReferenceName\":\"CAL - YYYYMM\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"EMP - Company Code\"},\"Name\":\"DimEmployeeHistory.EMP - Company Code\",\"NativeReferenceName\":\"EMP - Company Code1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"EMP - Job Role Group\"},\"Name\":\"DimEmployeeHistory.EMP - Job Role Group\",\"NativeReferenceName\":\"EMP - Job Role Group1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"JOB- Job Title\"},\"Name\":\"DimEmployeeHistory.JOB- Job Title\",\"NativeReferenceName\":\"JOB- Job Title\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"EMP - Employee Name\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Name\",\"NativeReferenceName\":\"EMP - Employee Name1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC - Facility LBC And Name\"},\"Name\":\"DimLBCLocation.LOC - Facility LBC And Name\",\"NativeReferenceName\":\"LOC - Facility LBC And Name\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"AMT - Allocated Wage (USD)\"}},\"Function\":0},\"Name\":\"Sum(FactEmployeeWageHoursForAllocationOut.AMT - Allocated Wage (USD))\",\"NativeReferenceName\":\"Sum of AMT - Allocated Wage (USD)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Department Indicator\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.IND - Department Indicator\",\"NativeReferenceName\":\"IND - Department Indicator\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"EMP - Employee Name\"}}}]},\"columnProperties\":{\"Sum(FactEmployeeWageHoursForAllocation_UAT.AMT - Allocated Wage (USD))\":{\"formatString\":null},\"Sum(FactEmployeeWageHoursForAllocationOutBound_UAT.AMT - Allocated Wage (USD))\":{\"formatString\":null}},\"drillFilterOtherVisuals\":true,\"objects\":{}}}",
+          "filters": "[{\"name\":\"9553a807e0ac28019178\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimLBCLocation\"}},\"Property\":\"LOC - Facility LBC And Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC - Facility LBC And Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'22669||CORPORATE CAN-SHARED SERVICES'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{},\"isHiddenInViewMode\":false},{\"name\":\"f83035a32cdc53357eb1\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimCalendarDate\"}},\"Property\":\"CAL - YYYYMM\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CAL - YYYYMM\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'202501'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{},\"isHiddenInViewMode\":false}]",
+          "height": 660.00,
+          "width": 1048.33,
+          "x": 231.67,
+          "y": 60.00,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"c24a15560481082d9a27\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.6666666666666667,\"y\":13.333333333333334,\"z\":7000,\"width\":216.66666666666669,\"height\":35,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Filter Criteria\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"14pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 35.00,
+          "width": 216.67,
+          "x": 1.67,
+          "y": 13.33,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"ce4ac1d3038e62802444\",\"layouts\":[{\"id\":0,\"position\":{\"x\":980.2479612292959,\"y\":0,\"z\":11000,\"width\":299.752038770704,\"height\":60.58817804939762,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"images08993519917478476.jpg\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 60.59,
+          "width": 299.75,
+          "x": 980.25,
+          "y": 0.00,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"dee87590d0260b9a5c81\",\"layouts\":[{\"id\":0,\"position\":{\"x\":218.1818181818182,\"y\":0,\"z\":6000,\"width\":26.446280991735538,\"height\":720.6611570247934,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"basicShape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'line'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 720.66,
+          "width": 26.45,
+          "x": 218.18,
+          "y": 0.00,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"eb8de2f05ae2b2043cd2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":492.74139330010433,\"z\":2000,\"width\":243.03234032688073,\"height\":76.1145241683088,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.IND - Allocation Methodolgy\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocationOut\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Allocation Methodolgy\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.IND - Allocation Methodolgy\",\"NativeReferenceName\":\"IND - Allocation Methodolgy\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 76.11,
+          "width": 243.03,
+          "x": 0.00,
+          "y": 492.74,
+          "z": 2000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "without Wage - No Customer",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"c2c21dd5509ad50110e0\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimEmployeeHistoryNoWage\"}},\"Property\":\"IND - GDPR Restricted\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"d0ff7420a56053e02321\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage\"}},\"Property\":\"IND - GDPRRestricted\"}},\"type\":\"Categorical\",\"howCreated\":1}]",
+      "height": 720.00,
+      "name": "dea76b43b4b2046a0602",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"350f6c6b87a5318c7492\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.333333333333334,\"y\":125,\"z\":4000,\"width\":223.33333333333334,\"height\":75,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Employee Number\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Employee Number\"}]},\"columnProperties\":{\"DimEmployeeHistoryNoWage.EMP - Employee Number\":{\"displayName\":\"Employee Number\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Number\"}},\"Right\":{\"Literal\":{\"Value\":\"'420302'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 75.00,
+          "width": 223.33,
+          "x": 8.33,
+          "y": 125.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"44ec9c19d9301818e8e9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":218.1818181818182,\"y\":0,\"z\":6000,\"width\":26.446280991735538,\"height\":720.6611570247934,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"basicShape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'line'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 720.66,
+          "width": 26.45,
+          "x": 218.18,
+          "y": 0.00,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"54ef5b07924028dbbe5c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":6.472819216182049,\"y\":268.621997471555,\"z\":12000,\"width\":223.31226295828068,\"height\":67.96460176991151,\"tabOrder\":12000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimLBCLocation.LOC- Facility LBC\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC- Facility LBC\"},\"Name\":\"DimLBCLocation.LOC- Facility LBC\",\"NativeReferenceName\":\"LOC- Facility LBC\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 67.96,
+          "width": 223.31,
+          "x": 6.47,
+          "y": 268.62,
+          "z": 12000.00
+        },
+        {
+          "config": "{\"name\":\"7646ad54dc598a4ed5c0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":242.874251497006,\"y\":0,\"z\":5000,\"width\":839.2814371257485,\"height\":60.35928143712575,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Employee Lookup, No Customer (without wage)\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"24pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 60.36,
+          "width": 839.28,
+          "x": 242.87,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"78b19b347a8250302ba3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.333333333333334,\"y\":200,\"z\":0,\"width\":223.33333333333334,\"height\":68.33333333333334,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - MD Harmonized Level1\"},\"Name\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\"}]},\"columnProperties\":{\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\":{\"displayName\":\"MD Harmonized Level1\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 68.33,
+          "width": 223.33,
+          "x": 8.33,
+          "y": 200.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"95f04213eb2631ac6bd0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":6.676712646342877,\"y\":395.26138866349834,\"z\":8000,\"width\":221.6668598585835,\"height\":82.79123681465168,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\"}]},\"columnProperties\":{\"DimCustomerPrimaryContact.CUST - Simplified Group Name\":{\"displayName\":\"Simplified Group Name\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'target'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter5291fc6aa932ae1e33d4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimCustomerPrimaryContact\"}},\"Property\":\"CUST - Portfolio Group Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Portfolio Group Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'TARGET (PACKAGING)'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 82.79,
+          "width": 221.67,
+          "x": 6.68,
+          "y": 395.26,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"9a69116f17c7318bce62\",\"layouts\":[{\"id\":0,\"position\":{\"x\":8.012055175611453,\"y\":552.8318071171902,\"z\":3000,\"width\":223.0022023878521,\"height\":80.12055175611452,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Employee Full Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Full Name\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Employee Full Name\",\"NativeReferenceName\":\"EMP - Employee Full Name\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'Sorenson, Peter'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 80.12,
+          "width": 223.00,
+          "x": 8.01,
+          "y": 552.83,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"9b27504e6439d4442b1e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":6.676712646342877,\"y\":478.05262547815,\"z\":2000,\"width\":223.0022023878521,\"height\":74.77918163904022,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Allocation Methodolgy\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f1\",\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"IND - Allocation Methodolgy\"},\"Name\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Allocation Methodolgy\",\"NativeReferenceName\":\"IND - Allocation Methodolgy\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 74.78,
+          "width": 223.00,
+          "x": 6.68,
+          "y": 478.05,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"a066993c864e7c62142b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":980.2479612292959,\"y\":0,\"z\":11000,\"width\":299.752038770704,\"height\":60.58817804939762,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"images08993519917478476.jpg\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 60.59,
+          "width": 299.75,
+          "x": 980.25,
+          "y": 0.00,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"b70a331d933b741002b9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":6.676712646342877,\"y\":60.090413817085896,\"z\":10000,\"width\":224.33754491712068,\"height\":65.4317839341602,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCalendarDate.DATE - CalendarDate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"},\"Name\":\"DimCalendarDate.DATE - CalendarDate\",\"NativeReferenceName\":\"DATE - CalendarDate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"startDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2025-01-01T00:00:00'\"}}},\"endDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2025-01-31T00:00:00'\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2025-01-01T00:00:00'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":3,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"DATE - CalendarDate\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2025-02-01T00:00:00'\"}}}}}}}]}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Date Range'\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 65.43,
+          "width": 224.34,
+          "x": 6.68,
+          "y": 60.09,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"bc7168a4d119230989a7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.6666666666666667,\"y\":13.333333333333334,\"z\":7000,\"width\":216.66666666666669,\"height\":35,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Filter Criteria\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"14pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 35.00,
+          "width": 216.67,
+          "x": 1.67,
+          "y": 13.33,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"c7f0abfcce02040e0380\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":633.3333333333334,\"z\":1000,\"width\":221.66666666666669,\"height\":76.66666666666667,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Data Source\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f1\",\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"IND - Data Source\"},\"Name\":\"FactEmployeeWageHoursForAllocationNoWage.IND - Data Source\",\"NativeReferenceName\":\"Data Source1\"}]},\"columnProperties\":{\"FactEmployeeWageHoursForAllocationNoWage.IND - Data Source\":{\"displayName\":\"Data Source\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 76.67,
+          "width": 221.67,
+          "x": 10.00,
+          "y": 633.33,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"e05c96c1b65536701e58\",\"layouts\":[{\"id\":0,\"position\":{\"x\":6.472819216182049,\"y\":326.87737041719345,\"z\":13000,\"width\":223.31226295828068,\"height\":67.96460176991151,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Customer1(FromGRD)\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"NativeReferenceName\":\"CUST - Customer1(FromGRD)\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 67.96,
+          "width": 223.31,
+          "x": 6.47,
+          "y": 326.88,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"fb1c0074a50aeb948799\",\"layouts\":[{\"id\":0,\"position\":{\"x\":231.9711023579169,\"y\":59.47976983536331,\"z\":9000,\"width\":1048.3309433482782,\"height\":660.2254451725327,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"DimLBCLocation.LOC - Facility LBC And Name\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Job Sub Family Name\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.JOB - Job Title\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Employee Number\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Employee Name\"},{\"queryRef\":\"DimCalendarDate.CAL - YYYYMM\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Job Role Group\"},{\"queryRef\":\"DimEmployeeHistoryNoWage.EMP - Company Code\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0},{\"Name\":\"d1\",\"Entity\":\"DimEmployeeHistoryNoWage\",\"Type\":0},{\"Name\":\"d2\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC - Facility LBC And Name\"},\"Name\":\"DimLBCLocation.LOC - Facility LBC And Name\",\"NativeReferenceName\":\"LOC - Facility LBC And Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Job Sub Family Name\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Job Sub Family Name\",\"NativeReferenceName\":\"EMP - Job Sub Family Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"JOB - Job Title\"},\"Name\":\"DimEmployeeHistoryNoWage.JOB - Job Title\",\"NativeReferenceName\":\"JOB - Job Title\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Employee Name\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Employee Name\",\"NativeReferenceName\":\"EMP - Employee Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"CAL - YYYYMM\"},\"Name\":\"DimCalendarDate.CAL - YYYYMM\",\"NativeReferenceName\":\"CAL - YYYYMM\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Job Role Group\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Job Role Group\",\"NativeReferenceName\":\"EMP - Job Role Group\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"EMP - Company Code\"},\"Name\":\"DimEmployeeHistoryNoWage.EMP - Company Code\",\"NativeReferenceName\":\"EMP - Company Code\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC - Facility LBC And Name\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 660.23,
+          "width": 1048.33,
+          "x": 231.97,
+          "y": 59.48,
+          "z": 9000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "with wage - Excel Pull",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"e6abac02c4e539d080d8\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimEmployeeHistoryNoWage\"}},\"Property\":\"IND - GDPR Restricted\"}},\"type\":\"Categorical\",\"howCreated\":1},{\"name\":\"dff1473cb516e1ba2db2\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"FactEmployeeWageHoursForAllocationNoWage\"}},\"Property\":\"IND - GDPR Restricted\"}},\"type\":\"Categorical\",\"howCreated\":1}]",
+      "height": 720.00,
+      "name": "ec9adf6ca866592457d1",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0d9546aa7b6902abe79c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":263.06247826590936,\"z\":12000,\"width\":232.34960009273212,\"height\":81.4558942853831,\"tabOrder\":12000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimLBCLocation.LOC- Facility LBC\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC- Facility LBC\"},\"Name\":\"DimLBCLocation.LOC- Facility LBC\",\"NativeReferenceName\":\"LOC- Facility LBC\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimLBCLocation\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LOC- Facility LBC\"}},\"Right\":{\"Literal\":{\"Value\":\"'31300'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 81.46,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 263.06,
+          "z": 12000.00
+        },
+        {
+          "config": "{\"name\":\"1eca1401399d4212ce17\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.3353425292685754,\"y\":491.40605077083575,\"z\":2000,\"width\":229.67891503419497,\"height\":74.77918163904022,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.IND - Allocation Methodolgy\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocationOut\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Allocation Methodolgy\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.IND - Allocation Methodolgy\",\"NativeReferenceName\":\"IND - Allocation Methodolgy\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 74.78,
+          "width": 229.68,
+          "x": 1.34,
+          "y": 491.41,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"33905ce4d0b083b7a767\",\"layouts\":[{\"id\":0,\"position\":{\"x\":980.2479612292959,\"y\":0,\"z\":11000,\"width\":299.752038770704,\"height\":60.58817804939762,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"images08993519917478476.jpg\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 60.59,
+          "width": 299.75,
+          "x": 980.25,
+          "y": 0.00,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"4263e0b03008192bcdd5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":640.9644140489162,\"z\":1000,\"width\":229.67891503419497,\"height\":78.78520922684595,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.IND - Data Source\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocationOut\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Data Source\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.IND - Data Source\",\"NativeReferenceName\":\"IND - Data Source\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 78.79,
+          "width": 229.68,
+          "x": 0.00,
+          "y": 640.96,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"49d8952cb468e84add57\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.3353425292685754,\"y\":415.291526602527,\"z\":8000,\"width\":229.67891503419497,\"height\":76.1145241683088,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Simplified Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\",\"NativeReferenceName\":\"CUST - Simplified Group Name\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter5291fc6aa932ae1e33d4\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DimCustomerPrimaryContact\"}},\"Property\":\"CUST - Portfolio Group Name\"}},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 76.11,
+          "width": 229.68,
+          "x": 1.34,
+          "y": 415.29,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"4af5deb2690c99184b76\",\"layouts\":[{\"id\":0,\"position\":{\"x\":218.1818181818182,\"y\":0,\"z\":6000,\"width\":26.446280991735538,\"height\":720.6611570247934,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"basicShape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'line'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 720.66,
+          "width": 26.45,
+          "x": 218.18,
+          "y": 0.00,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"5bfac0a7a583679ed8a3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":344.5183725512925,\"z\":13000,\"width\":232.34960009273212,\"height\":70.7731540512345,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Customer1(FromGRD)\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Customer1(FromGRD)\",\"NativeReferenceName\":\"CUST - Customer1(FromGRD)\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 70.77,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 344.52,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"71dbcb0c6c98053424d0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":112.16877245856034,\"z\":4000,\"width\":232.34960009273212,\"height\":74.77918163904022,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Number\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 74.78,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 112.17,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"9c95d64f06b48e0b0878\",\"layouts\":[{\"id\":0,\"position\":{\"x\":242.874251497006,\"y\":0,\"z\":5000,\"width\":839.2814371257485,\"height\":60.35928143712575,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Labor Details Pull - WITH WAGE\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"24pt\"}}]}]}}]}}}",
+          "filters": "[]",
+          "height": 60.36,
+          "width": 839.28,
+          "x": 242.87,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"b2d8f9bcd02ec62bd801\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.3353425292685754,\"y\":566.185232409876,\"z\":3000,\"width\":229.67891503419497,\"height\":74.77918163904022,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"EMP - Employee Name\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Name\",\"NativeReferenceName\":\"EMP - Employee Name\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 74.78,
+          "width": 229.68,
+          "x": 1.34,
+          "y": 566.19,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"b67edb170829a530049c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":186.94795409760056,\"z\":0,\"width\":232.34960009273212,\"height\":76.1145241683088,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - MD Harmonized Level1\"},\"Name\":\"DimCustomerPrimaryContact.CUST - MD Harmonized Level1\",\"NativeReferenceName\":\"CUST - MD Harmonized Level1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"CUST - Simplified Group Name\"}},\"Right\":{\"Literal\":{\"Value\":\"'campbe'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 76.11,
+          "width": 232.35,
+          "x": 0.00,
+          "y": 186.95,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"d6d0f5eb4c0b5ba8205d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":231.9711023579169,\"y\":59.47976983536331,\"z\":10000,\"width\":1048.3309433482782,\"height\":660.2254451725327,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\"},{\"queryRef\":\"DimCustomerPrimaryContact.CUST - Portfolio Group Name\"},{\"queryRef\":\"DimLBCLocation.LOC - Facility LBC And Name\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Job Sub Family Name\"},{\"queryRef\":\"DimEmployeeHistory.JOB- Job Title\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Number\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Employee Name\"},{\"queryRef\":\"Sum(FactEmployeeWageHoursForAllocationOut.AMT - Allocated Wage (USD))\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.IND - Allocation Methodolgy\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.IND - Data Source\"},{\"queryRef\":\"DimCalendarDate.CAL - YYYYMM\"},{\"queryRef\":\"Sum(FactEmployeeWageHoursForAllocationOut.QNTY - Allocation Percentage)\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.PM - PM Points (Measure)\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.QNTY - Hours (Measure)\"},{\"queryRef\":\"FactEmployeeWageHoursForAllocationOut.IND - Department Indicator\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Job Role Group\"},{\"queryRef\":\"DimEmployeeHistory.EMP - Company Code\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCustomerPrimaryContact\",\"Type\":0},{\"Name\":\"d1\",\"Entity\":\"DimLBCLocation\",\"Type\":0},{\"Name\":\"d2\",\"Entity\":\"DimEmployeeHistory\",\"Type\":0},{\"Name\":\"d3\",\"Entity\":\"DimCalendarDate\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"FactEmployeeWageHoursForAllocationOut\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Simplified Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Simplified Group Name\",\"NativeReferenceName\":\"CUST - Simplified Group Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CUST - Portfolio Group Name\"},\"Name\":\"DimCustomerPrimaryContact.CUST - Portfolio Group Name\",\"NativeReferenceName\":\"CUST - Portfolio Group Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"LOC - Facility LBC And Name\"},\"Name\":\"DimLBCLocation.LOC - Facility LBC And Name\",\"NativeReferenceName\":\"LOC - Facility LBC And Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Job Sub Family Name\"},\"Name\":\"DimEmployeeHistory.EMP - Job Sub Family Name\",\"NativeReferenceName\":\"EMP - Job Sub Family Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"JOB- Job Title\"},\"Name\":\"DimEmployeeHistory.JOB- Job Title\",\"NativeReferenceName\":\"JOB- Job Title\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Employee Number\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Number\",\"NativeReferenceName\":\"EMP - Employee Number\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Employee Name\"},\"Name\":\"DimEmployeeHistory.EMP - Employee Name\",\"NativeReferenceName\":\"EMP - Employee Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d3\"}},\"Property\":\"CAL - YYYYMM\"},\"Name\":\"DimCalendarDate.CAL - YYYYMM\",\"NativeReferenceName\":\"CAL - YYYYMM\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Job Role Group\"},\"Name\":\"DimEmployeeHistory.EMP - Job Role Group\",\"NativeReferenceName\":\"EMP - Job Role Group\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d2\"}},\"Property\":\"EMP - Company Code\"},\"Name\":\"DimEmployeeHistory.EMP - Company Code\",\"NativeReferenceName\":\"EMP - Company Code\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"AMT - Allocated Wage (USD)\"}},\"Function\":0},\"Name\":\"Sum(FactEmployeeWageHoursForAllocationOut.AMT - Allocated Wage (USD))\",\"NativeReferenceName\":\"Sum of AMT - Allocated Wage (USD)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Allocation Methodolgy\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.IND - Allocation Methodolgy\",\"NativeReferenceName\":\"IND - Allocation Methodolgy\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Data Source\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.IND - Data Source\",\"NativeReferenceName\":\"IND - Data Source\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"QNTY - Allocation Percentage\"}},\"Function\":0},\"Name\":\"Sum(FactEmployeeWageHoursForAllocationOut.QNTY - Allocation Percentage)\",\"NativeReferenceName\":\"Sum of QNTY - Allocation Percentage\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"PM - PM Points (Measure)\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.PM - PM Points (Measure)\",\"NativeReferenceName\":\"PM - PM Points (Measure)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"QNTY - Hours (Measure)\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.QNTY - Hours (Measure)\",\"NativeReferenceName\":\"QNTY - Hours (Measure)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"IND - Department Indicator\"},\"Name\":\"FactEmployeeWageHoursForAllocationOut.IND - Department Indicator\",\"NativeReferenceName\":\"IND - Department Indicator\"}]},\"columnProperties\":{\"Sum(FactEmployeeWageHoursForAllocation_UAT.AMT - Allocated Wage (USD))\":{\"formatString\":null},\"Sum(FactEmployeeWageHoursForAllocationOutBound_UAT.AMT - Allocated Wage (USD))\":{\"formatString\":null},\"Sum(FactEmployeeWageHoursForAllocationOut.AMT - Allocated Wage (USD))\":{\"formatString\":\"\\\\$#,0.00;(\\\\$#,0.00);\\\\$#,0.00\"}},\"drillFilterOtherVisuals\":true,\"objects\":{}}}",
+          "filters": "[]",
+          "height": 660.23,
+          "width": 1048.33,
+          "x": 231.97,
+          "y": 59.48,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"f9b05ddf452be5e70441\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1.2586037364798426,\"y\":12.586037364798427,\"z\":7000,\"width\":197.60078662733528,\"height\":36.49950835791544,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Filter Criteria\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontSize\":\"14pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]}}}",
+          "filters": "[]",
+          "height": 36.50,
+          "width": 197.60,
+          "x": 1.26,
+          "y": 12.59,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"faa6ef90618ac65b7cbd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":48.07233105366871,\"z\":9000,\"width\":231.01425756346356,\"height\":64.09644140489162,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"DimCalendarDate.DATE - CalendarDate\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DimCalendarDate\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"},\"Name\":\"DimCalendarDate.DATE - CalendarDate\",\"NativeReferenceName\":\"DATE - CalendarDate\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DATE - CalendarDate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Date Range'\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"5D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 64.10,
+          "width": 231.01,
+          "x": 0.00,
+          "y": 48.07,
+          "z": 9000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}
